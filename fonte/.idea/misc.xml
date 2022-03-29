@@ -3,7 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22135416666666666" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/drawable/ic_studeofin.xml" value="0.22135416666666666" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout-sw600dp/login.xml" value="0.275" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/Login.xml" value="0.36666666666666664" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/Login_Dark.xml" value="0.36666666666666664" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/Logoff.xml" value="0.36666666666666664" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/activity_logoff.xml" value="0.36666666666666664" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/activity_main.xml" value="0.24048913043478262" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/cadastro_usuario.xml" value="0.36666666666666664" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/login.xml" value="0.31476449275362317" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/login_dark.xml" value="0.31476449275362317" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/logoff.xml" value="0.36666666666666664" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/mipmap-anydpi-v26/_ic_launcher.xml" value="0.22135416666666666" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/mipmap-anydpi-v26/_ic_launcher_round.xml" value="0.22135416666666666" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
       </map>
     </option>

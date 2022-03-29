@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">StudeoFin</string>
+    <string name="usuario">Usuário</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="salvar">Salvar</string>
+    <string name="sair">Sair</string>
+    <string name="nome">Nome</string>
+    <string name="sobrenome">Sobrenome</string>
+    <string name="email">E-mail</string>
+    <string name="cadastrar_senha">Senha</string>
+    <string name="ok">Ok</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="cancelar_conta">Cancelar conta</string>
+    <string name="esqueceu">Esqueceu a senha?</string>
+    <string name="criar_conta">Criar uma conta</string>
+    <string name="texto_logoff">Você tem certeza que deseja fazer logoff?</string>
+    <string name="msg_logoff_efetuado">Logoff efetuado com sucesso!</string>
+    <string name="msg_cadastro_efetuado">Cadastro efetuado com sucesso!</string>
+
 </resources>
