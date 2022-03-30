@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent">
@@ -28,11 +29,13 @@
             android:layout_width="match_parent">
 
             <EditText
-                android:hint="Usuário"
+
                 android:id="@+id/input_email"
-                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
+                android:hint="Usuário"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -44,9 +47,11 @@
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:inputType="textEmailAddress"
+                android:id="@+id/input_senha"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck" />
        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton

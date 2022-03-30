@@ -15,12 +15,19 @@
         android:theme="@style/Theme.StudeoFin">
         <activity
             android:name=".CadastroUsuario"
+            android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Logoff"
+            android:name=".LogoffActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"/>
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
