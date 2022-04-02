@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/nav_planejamento_financeiro"
+            android:icon="@drawable/ic_calendar"
+            android:title="Planejamento Financeiro"/>
+        <item
+            android:id="@+id/nav_gerir_receitas_despesas"
+            android:icon="@drawable/ic_money"
+            android:title="Gerir Receitas e Despesas" />
+        <item
+            android:id="@+id/nav_controle_saldo"
+            android:icon="@drawable/ic_calculate"
+            android:title="Controle de Saldo" />
+        <item
+            android:id="@+id/nav_alerta_gastos"
+            android:icon="@drawable/ic_warning"
+            android:title="Alerta de Gastos" />
+        <item
+            android:id="@+id/nav_categorias"
+            android:icon="@drawable/ic_list"
+            android:title="Categorias" />
+        <item
+            android:id="@+id/nav_dicas_investimentos"
+            android:icon="@drawable/ic_diamond"
+            android:title="Dicas de Investimentos" />
+        <item
+            android:id="@+id/nav_metas"
+            android:icon="@drawable/ic_savings"
+            android:title="Metas" />
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_person"
+            android:title="Perfil" />
+        <item
+            android:id="@+id/nav_sair"
+            android:icon="@drawable/ic_exit"
+            android:title="Sair" />
+    </group>
+</menu>
