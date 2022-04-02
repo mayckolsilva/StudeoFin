@@ -4,125 +4,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroUsuario">
-
+    tools:context=".CadastroUsuarioActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@color/white"
         android:orientation="vertical"
-        android:paddingBottom="24dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
         android:gravity="center">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="24dp"
-            android:background="@color/cinza_escuro"
-            android:text="@string/usuario"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="22dp" />
+            android:layout_height="70dp"
+            android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imagem_usuario"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@android:drawable/ic_menu_camera"
-            android:layout_marginBottom="24dp"
-            android:background="@color/cinza_escuro"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-
-            <EditText
-                android:id="@+id/edtNome"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/cinza_escuro"
-                android:hint="@string/nome"
-                android:inputType="textEmailAddress"
-                android:textSize="14dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="12dp"
+                android:background="@color/lightgrey"
+                android:gravity="center"
+                android:text="@string/usuario"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="22dp" />
+        </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="24dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
 
-            <EditText
-                android:id="@+id/edtSobrenome"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagem_usuario"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/img_usuario"
+                android:layout_gravity="center_horizontal"/>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/cinza_escuro"
-                android:hint="@string/sobrenome"
-                android:inputType="textEmailAddress"
-                android:textSize="14dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+                <EditText
+                    android:id="@+id/edtNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_edit_text"
+                    android:hint="@string/nome"
+                    android:inputType="textEmailAddress"
+                    android:textSize="14dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/edtEmail"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/cinza_escuro"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:textSize="14dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+                <EditText
+                    android:id="@+id/edtSobrenome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_edit_text"
+                    android:hint="@string/sobrenome"
+                    android:inputType="textEmailAddress"
+                    android:textSize="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/edtSenha"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <EditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_edit_text"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:textSize="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <EditText
+                    android:id="@+id/edtSenha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_edit_text"
+                    android:hint="@string/cadastrar_senha"
+                    android:inputType="textEmailAddress"
+                    android:textSize="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_salvar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/round_corner_button"
+                android:padding="12dp"
+                android:text="@string/salvar"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/link_cancelar_conta"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/cinza_escuro"
-                android:hint="@string/cadastrar_senha"
-                android:inputType="textEmailAddress"
-                android:textSize="14dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="@string/cancelar_conta"
+                android:textColor="@color/vermelho"
+                android:textSize="14dp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_salvar"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/amarelo"
-            android:padding="12dp"
-            android:text="@string/salvar"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:textAllCaps="false"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/link_cancelar_conta"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            android:gravity="center"
-            android:text="@string/cancelar_conta"
-            android:textColor="@color/vermelho"
-            android:textSize="14dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
