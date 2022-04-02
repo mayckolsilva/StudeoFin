@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="uniftec.fabio.com.studeofin">
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudeoFin">
+        <activity
+            android:name=".CancelarConta"
+            android:exported="false" />
+        <activity
+            android:name=".EsqueceuSenha"
+            android:exported="false" />
         <activity
             android:name=".CadastroUsuario"
             android:configChanges="orientation|screenSize"
@@ -24,7 +29,7 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:configChanges="orientation|screenSize"
