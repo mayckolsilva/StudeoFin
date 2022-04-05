@@ -28,7 +28,7 @@ public class LoginActivity extends Activity {
                 MODE_PRIVATE,
                 null);
 
-            query.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, desNome VARCHAR(50) NOT NULL, desSobrenome VARCHAR(50) NOT NULL )");
+            query.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, des_nome VARCHAR(50) NOT NULL, des_sobrenome VARCHAR(50) NOT NULL )");
             query.execSQL("CREATE TABLE IF NOT EXISTS meta (id_meta INTEGER PRIMARY KEY AUTOINCREMENT, des_meta VARCHAR(100) NOT NULL, vlr_meta REAL )");
 
             System.out.println("databse has been creates.....");
@@ -71,7 +71,7 @@ public class LoginActivity extends Activity {
 
         try {
             Cursor busca = query.rawQuery("SELECT des_email FROM usuarios WHERE des_email = '" +
-                            desEmail.getText().toString()+ "' AND des_senha = '" + desSenha.getText().toString().trim() + "'",
+                            desEmail.getText().toString().trim() + "' AND des_senha = '" + desSenha.getText().toString().trim() + "'",
                     null);
 
             int indiceEmail = busca.getColumnIndex("des_email");
