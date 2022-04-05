@@ -19,7 +19,7 @@
             android:name=".EsqueceuSenha"
             android:exported="false" />
         <activity
-            android:name=".CadastroUsuario"
+            android:name=".CadastroUsuarioActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
