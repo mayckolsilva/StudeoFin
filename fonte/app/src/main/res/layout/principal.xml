@@ -9,9 +9,9 @@
     android:layout_height="match_parent"
     tools:openDrawer="start">
 
-<!--
-        <include layout="@layout/toolbar"/>
--->
+
+    <include layout="@layout/toolbar"/>
+
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"

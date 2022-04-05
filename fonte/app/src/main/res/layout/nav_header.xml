@@ -21,7 +21,7 @@
 
     <!--exibir o nome do usuário na view abaixo-->
     <TextView
-        android:id="@+id/nav_header_textView"
+        android:id="@+id/nav_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
