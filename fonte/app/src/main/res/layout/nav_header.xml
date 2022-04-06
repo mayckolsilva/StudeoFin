@@ -10,16 +10,16 @@
     android:orientation="horizontal"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-    <!--android:foreground="?attr/selectableItemBackgroundBorderless"-->
+    <!--android:foreground="@drawable/round_corner_button"-->
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imagem_usuario"
+        android:id="@+id/nav_imagem_usuario"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:src="@drawable/img_usuario"
         android:layout_gravity="center_vertical"/>
 
-    <!--exibir o nome do usuário na view abaixo-->
+    <!--exibir o nome do usuário na textView abaixo-->
     <TextView
         android:id="@+id/nav_usuario"
         android:layout_width="match_parent"

@@ -9,11 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
 
     private EditText desNome, desSobrenome, desEmail, desSenha;
+    private TextView linkCancelar;
     private Button btnSalvar;
     private SQLiteDatabase query;
     @Override
@@ -26,7 +28,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         desEmail = (EditText) findViewById(R.id.edtEmail);
         desSenha = (EditText) findViewById(R.id.edtSenha);
         btnSalvar = (Button) findViewById(R.id.btn_salvar);
-
+        linkCancelar = (TextView) findViewById(R.id.link_cancelar_conta);
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,10 +48,16 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     } catch (Exception e){
                         e.printStackTrace();
                     }
-
                 }
+            }
+        });
 
-
+        //Cancelar Conta volta tela login
+        linkCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(CadastroUsuarioActivity.this, PrincipalActivity.class);
+                startActivity(back);
             }
         });
     }
@@ -62,7 +70,4 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
-
 }
