@@ -28,4 +28,7 @@
     <string name="msg_logoff_efetuado">Sessão encerrada.</string>
     <string name="msg_cadastro_efetuado">Cadastro efetuado com sucesso!</string>
     <string name="msg_excluir">Dados escluídos.</string>
+
+    <string name="open_drawer">Abrir</string>
+    <string name="close_drawer">Fechar</string>
 </resources>
