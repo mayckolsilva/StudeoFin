@@ -10,7 +10,10 @@
     tools:openDrawer="start">
 
 
-    <include layout="@layout/toolbar"/>
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
     <com.google.android.material.navigation.NavigationView
@@ -18,10 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/menu_nav">
-    </com.google.android.material.navigation.NavigationView>
+        app:menu="@menu/menu_nav"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
-
 
