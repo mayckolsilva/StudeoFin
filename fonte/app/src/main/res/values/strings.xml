@@ -18,7 +18,6 @@
     <string name="recuperar_senha">Recuperar Senha</string>
     <string name="texto_cancelar_conta">Você irá apagar todos seus dados! Deseja realmente cancelar sua conta?</string>
 
-
     <string name="msg_campos_invalidos">Campos obrigatórios não preenchidos.</string>
     <string name="msg_falha_autenticacao">E-mail e/ou senha incorreto.</string>
     <string name="msg_salvar">Dados salvos.</string>
