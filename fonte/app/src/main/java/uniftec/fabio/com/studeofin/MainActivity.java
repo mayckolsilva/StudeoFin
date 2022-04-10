@@ -1,101 +1,60 @@
 package uniftec.fabio.com.studeofin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.view.Menu;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private Toolbar toolbar;
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
+import uniftec.fabio.com.studeofin.databinding.ActivityMainBinding;
 
+public class MainActivity extends AppCompatActivity {
+
+    private AppBarConfiguration mAppBarConfiguration;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.principal);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
-        drawerLayout.addDrawerListener(toggle);
-
-        toggle.syncState();
-
-        navigationView = (NavigationView) findViewById(R.id.navView);
-        navigationView.setNavigationItemSelectedListener(this);
+        DrawerLayout drawer = binding.drawerLayout;
+        NavigationView navigationView = binding.navView;
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_planejamento_financeiro, R.id.nav_gerir_receitas_despesas,
+                R.id.nav_controle_saldo, R.id.nav_alerta_gastos, R.id.nav_categorias,
+                R.id.nav_dicas_investimentos, R.id.nav_metas, R.id.nav_perfil, R.id.nav_sair)
+                .setOpenableLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     @Override
-    public void onBackPressed() {
-
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.nav_planejamento_financeiro: {
-                Toast.makeText(this, "Planejamento Financeiro", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_gerir_receitas_despesas: {
-                Toast.makeText(this, "Gerir Receitas e Despesas", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_controle_saldo: {
-                Toast.makeText(this, "Controle de Saldo", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_alerta_gastos: {
-                Toast.makeText(this, "Alerta de Gastos", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_categorias: {
-                Toast.makeText(this, "Categorias", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_dicas_investimentos: {
-                Toast.makeText(this, "Dicas de Investimento", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_metas: {
-                Toast.makeText(this, "Metas", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_perfil: {
-                Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_sair: {
-                Toast.makeText(this, "Sair", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            default: {
-                Toast.makeText(this, "Menu", Toast.LENGTH_SHORT).show();
-                break;
-            }
-        }
-        drawerLayout.closeDrawer(GravityCompat.START);
-
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 }
-
