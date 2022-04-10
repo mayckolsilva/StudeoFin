@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import uniftec.fabio.com.studeofin.global.Global;
+
 public class LoginActivity extends Activity {
     private EditText desEmail;
     private EditText desSenha;
@@ -27,6 +29,7 @@ public class LoginActivity extends Activity {
             query = openOrCreateDatabase("studeofin",
                 MODE_PRIVATE,
                 null);
+
 
             query.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, des_nome VARCHAR(50) NOT NULL, des_sobrenome VARCHAR(50) NOT NULL )");
             query.execSQL("CREATE TABLE IF NOT EXISTS meta (id_meta INTEGER PRIMARY KEY AUTOINCREMENT, des_meta VARCHAR(100) NOT NULL, vlr_meta REAL )");
@@ -48,7 +51,7 @@ public class LoginActivity extends Activity {
             public void onClick(View view) {
 
                 if (validaLogin()){
-                    Intent i = new Intent(LoginActivity.this,PrincipalActivity.class );
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class );
                     startActivity(i);
                 } else {
                     Toast.makeText(LoginActivity.this, "Usuário inválido!", Toast.LENGTH_SHORT).show();
@@ -70,14 +73,21 @@ public class LoginActivity extends Activity {
     private boolean validaLogin() {
 
         try {
-            Cursor busca = query.rawQuery("SELECT des_email FROM usuarios WHERE des_email = '" +
+            Cursor busca = query.rawQuery("SELECT id_usuario, des_email, des_nome, des_sobrenome FROM usuarios WHERE des_email = '" +
                             desEmail.getText().toString().trim() + "' AND des_senha = '" + desSenha.getText().toString().trim() + "'",
                     null);
 
-            int indiceEmail = busca.getColumnIndex("des_email");
+            int indiceIdUsuario = busca.getColumnIndex("id_usuario");
+            int indiceDesEmail = busca.getColumnIndex("des_email");
+            int indiceDesNome= busca.getColumnIndex("des_nome");
+            int indiceSobreNome = busca.getColumnIndex("des_sobrenome");
             busca.moveToFirst();
             if(busca.getCount()>0){
-                Log.i("Email: ", busca.getString(indiceEmail));
+                Global.setIdUsuario(busca.getInt(indiceIdUsuario));
+                Global.setDesEmail(busca.getString(indiceDesEmail));
+                Global.setDesNome(busca.getString(indiceDesNome));
+                Global.setDesSobreNome(busca.getString(indiceSobreNome));
+               // Log.i("Email: ", busca.getString(indiceEmail));
                 return true;
             } else {
                 return false;

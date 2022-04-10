@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_planejamento_financeiro">
+
+    <fragment
+        android:id="@+id/nav_planejamento_financeiro"
+        android:name="uniftec.fabio.com.studeofin.fragment.PlanejamentoFinanceiroFragment"
+        android:label="Planejamento Financeiro"
+        tools:layout="@layout/fragment_planejamento_financeiro" />
+
+    <fragment
+        android:id="@+id/nav_gerir_receitas_despesas"
+        android:name="uniftec.fabio.com.studeofin.fragment.ReceitasDespesasFragment"
+        android:label="Gerir Receitas e Despesas"
+        tools:layout="@layout/fragment_receitas_despesas" />
+
+    <fragment
+        android:id="@+id/nav_controle_saldo"
+        android:name="uniftec.fabio.com.studeofin.fragment.ControleSaldoFragment"
+        android:label="Controle de Saldo"
+        tools:layout="@layout/fragment_controle_saldo" />
+
+    <fragment
+        android:id="@+id/nav_alerta_gastos"
+        android:name="uniftec.fabio.com.studeofin.fragment.AlertaGastosFragment"
+        android:label="Alerta de Gastos"
+        tools:layout="@layout/fragment_alerta_gastos" />
+
+    <fragment
+        android:id="@+id/nav_categorias"
+        android:name="uniftec.fabio.com.studeofin.fragment.CategoriasFragment"
+        android:label="Categorias"
+        tools:layout="@layout/fragment_categorias" />
+
+    <fragment
+        android:id="@+id/nav_dicas_investimentos"
+        android:name="uniftec.fabio.com.studeofin.fragment.DicasInvestimentoFragment"
+        android:label="Dicas de Investimento"
+        tools:layout="@layout/fragment_dicas_investimento" />
+
+    <fragment
+        android:id="@+id/nav_metas"
+        android:name="uniftec.fabio.com.studeofin.fragment.MetasFragment"
+        android:label="Metas"
+        tools:layout="@layout/fragment_metas" />
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="uniftec.fabio.com.studeofin.fragment.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
+        android:id="@+id/nav_sair"
+        android:name="uniftec.fabio.com.studeofin.fragment.LogoffFragment"
+        android:label="Logoff"
+        tools:layout="@layout/fragment_logoff" />
+
+
+</navigation>

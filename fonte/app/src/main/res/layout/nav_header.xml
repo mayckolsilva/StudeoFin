@@ -16,7 +16,7 @@
         android:id="@+id/nav_imagem_usuario"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:src="@drawable/img_usuario"
+        android:src="@mipmap/ic_launcher_round"
         android:layout_gravity="center_vertical"/>
 
     <!--exibir o nome do usuário na textView abaixo-->
