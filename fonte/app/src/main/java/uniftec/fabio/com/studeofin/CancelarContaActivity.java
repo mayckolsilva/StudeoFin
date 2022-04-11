@@ -26,8 +26,8 @@ public class CancelarContaActivity extends AppCompatActivity {
                 try{
                     query = openOrCreateDatabase("studeofin", MODE_PRIVATE,
                             null);
-                    query.execSQL("DELETE FROM usuarios WHERE id_usuario = " + Global.getIdUsuario(), null);
 
+                    query.delete("usuarios","des_email = ?", new String[]{Global.getDesEmail()});
                     Intent i = new Intent(CancelarContaActivity.this, LoginActivity.class );
                     startActivity(i);
                 } catch (Exception e){
