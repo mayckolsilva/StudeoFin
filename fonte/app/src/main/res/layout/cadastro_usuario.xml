@@ -125,16 +125,6 @@
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 
-            <TextView
-                android:id="@+id/link_cancelar_conta"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="12dp"
-                android:gravity="center"
-                android:text="@string/cancelar_conta"
-                android:textColor="@color/vermelho"
-                android:textSize="14dp" />
 
         </LinearLayout>
 
