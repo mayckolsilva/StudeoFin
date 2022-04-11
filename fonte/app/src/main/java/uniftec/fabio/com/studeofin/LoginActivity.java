@@ -30,20 +30,16 @@ public class LoginActivity extends Activity {
                 MODE_PRIVATE,
                 null);
 
-
             query.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, des_nome VARCHAR(50) NOT NULL, des_sobrenome VARCHAR(50) NOT NULL )");
             query.execSQL("CREATE TABLE IF NOT EXISTS meta (id_meta INTEGER PRIMARY KEY AUTOINCREMENT, des_meta VARCHAR(100) NOT NULL, vlr_meta REAL )");
 
-            System.out.println("databse has been creates.....");
         } catch (Exception e){
             e.printStackTrace();
         }
 
         desEmail = (EditText) findViewById(R.id.input_email);
         desSenha = (EditText) findViewById(R.id.input_senha);
-
         btnLogin = (Button) findViewById(R.id.btn_login);
-
         btnCriarConta = (TextView) findViewById(R.id.link_criar_conta);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +63,6 @@ public class LoginActivity extends Activity {
                 startActivity(i);
             }
         });
-
     }
 
     private boolean validaLogin() {
@@ -81,13 +76,13 @@ public class LoginActivity extends Activity {
             int indiceDesEmail = busca.getColumnIndex("des_email");
             int indiceDesNome= busca.getColumnIndex("des_nome");
             int indiceSobreNome = busca.getColumnIndex("des_sobrenome");
+
             busca.moveToFirst();
             if(busca.getCount()>0){
                 Global.setIdUsuario(busca.getInt(indiceIdUsuario));
                 Global.setDesEmail(busca.getString(indiceDesEmail));
                 Global.setDesNome(busca.getString(indiceDesNome));
                 Global.setDesSobreNome(busca.getString(indiceSobreNome));
-               // Log.i("Email: ", busca.getString(indiceEmail));
                 return true;
             } else {
                 return false;

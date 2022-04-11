@@ -33,23 +33,22 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(verificaCampos()){
                     try{
+
                         query = openOrCreateDatabase("studeofin",
                                 MODE_PRIVATE,
                                 null);
-                        String str = "INSERT INTO usuarios (des_email, des_senha, des_nome, des_sobrenome) VALUES " +
-                                "( '" + desEmail.getText().toString().trim() + "','" + desSenha.getText().toString().trim() + "','" + desNome.getText().toString().trim() + "','" + desSobrenome.getText().toString().trim() +"')";
+
                         query.execSQL("INSERT INTO usuarios (des_email, des_senha, des_nome, des_sobrenome) VALUES " +
                                 "( '" + desEmail.getText().toString().trim() + "','" + desSenha.getText().toString().trim() + "','" + desNome.getText().toString().trim() + "','" + desSobrenome.getText().toString().trim() +"')");
+
                         Toast.makeText(CadastroUsuarioActivity.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+
                         Intent i = new Intent(CadastroUsuarioActivity.this,LoginActivity.class );
                         startActivity(i);
                     } catch (Exception e){
                         e.printStackTrace();
                     }
-
                 }
-
-
             }
         });
     }
@@ -62,7 +61,4 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
-
 }
