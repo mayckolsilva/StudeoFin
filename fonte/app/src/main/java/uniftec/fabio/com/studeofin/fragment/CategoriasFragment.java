@@ -13,7 +13,7 @@ import uniftec.fabio.com.studeofin.databinding.FragmentCategoriasBinding;
 
 public class CategoriasFragment extends Fragment {
 
-    private FragmentCategoriasBinding binding;
+    FragmentCategoriasBinding binding;
     private SQLiteDatabase query;
 
     @Override
