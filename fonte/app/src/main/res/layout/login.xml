@@ -25,44 +25,45 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp">
 
             <EditText
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="65dp"
                 android:hint="Usuário"
                 android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck"
                 android:background="@drawable/border_edit_text"
                 android:textSize="14dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
             app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/input_senha"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_edit_text"
+                android:layout_height="65dp"
                 android:hint="Senha"
                 android:inputType="textPassword"
-                android:textSize="14dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:background="@drawable/border_edit_text"
+                android:textSize="14dp"/>
        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="12dp"
-            android:padding="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp"
+            android:padding="6dp"
             android:text="Entrar"
             android:textAllCaps="false"
             android:background="@drawable/round_corner_button"
@@ -74,7 +75,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
             android:textSize="14dp"
             android:text="@string/esqueceu"
@@ -85,7 +86,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
             android:textSize="14dp"
             android:text="@string/criar_conta"

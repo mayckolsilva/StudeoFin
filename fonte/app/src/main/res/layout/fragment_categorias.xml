@@ -6,7 +6,7 @@
         android:layout_weight="1"
         android:layout_width="match_parent"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -28,15 +28,15 @@
                     android:id="@+id/txt_desc_categoria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Descrição"
-                    android:textSize="16sp" />
+                    android:text="@string/descricao"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
 
                 <EditText
                     android:id="@+id/edt_desc_categoria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
             </LinearLayout>
 
@@ -48,30 +48,32 @@
                     android:id="@+id/rdg_categoria_tipo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/rdb_receita"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Receita"
-                        android:textSize="16sp"
+                        android:text="@string/receita"
+                        android:textSize="14dp"
                         android:layout_weight="1"/>
 
                     <RadioButton
                         android:id="@+id/rdb_despesa"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Despesa"
-                        android:textSize="16sp"
+                        android:text="@string/despesa"
+                        android:textSize="14dp"
                         android:layout_weight="1"/>
 
                     <RadioButton
                         android:id="@+id/rdb_meta"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Meta"
-                        android:textSize="16sp"
+                        android:layout_marginLeft="@+id/rdb_despesa"
+                        android:text="@string/meta"
+                        android:textSize="14dp"
                         android:layout_weight="1"/>
 
                 </RadioGroup>
@@ -79,39 +81,54 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="8dp">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_add_Categoria"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:text="Adicionar Categoria"
-                    android:padding="8dp"/>
+                    android:background="@drawable/round_corner_button"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
                 android:layout_weight="2">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_salvar_categoria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Salvar"
+                    android:layout_marginRight="4dp"
+                    android:text="@string/salvar"
+                    android:background="@drawable/round_corner_button"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"
                     android:layout_weight="1"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_excluir_categoria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Excluir" />
+                    android:layout_marginLeft="4dp"
+                    android:text="@string/excluir"
+                    android:background="@drawable/round_corner_button"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"
+                    android:layout_weight="1"/>
+
             </LinearLayout>
 
 
         </LinearLayout>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
