@@ -21,6 +21,7 @@ public class CancelarContaActivity extends AppCompatActivity {
 
         btnOk = findViewById(R.id.btn_OK);
         btnOk.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 try{
