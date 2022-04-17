@@ -2,17 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
     <ListView android:id="@+id/lista_categorias"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_width="match_parent"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:layout_weight="0"
         android:paddingLeft="8dp"
         android:paddingRight="8dp">
 
@@ -32,13 +29,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Descrição"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/edt_desc_categoria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp" />
+                    android:inputType="text"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -50,7 +48,6 @@
                     android:id="@+id/rdg_categoria_tipo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -58,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Receita"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:layout_weight="1"/>
 
                     <RadioButton
@@ -66,16 +63,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Despesa"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:layout_weight="1"/>
 
                     <RadioButton
                         android:id="@+id/rdb_meta"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@+id/rdb_despesa"
                         android:text="Meta"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:layout_weight="1"/>
 
                 </RadioGroup>
@@ -89,7 +85,6 @@
                     android:id="@+id/btn_add_Categoria"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:text="Adicionar Categoria"
                     android:padding="8dp"/>
             </LinearLayout>
@@ -118,5 +113,5 @@
         </LinearLayout>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>
