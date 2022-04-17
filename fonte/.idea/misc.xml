@@ -6,42 +6,27 @@
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/drawable/border_edit_text.xml" value="0.3675" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/cadastro_usuario.xml" value="0.3383152173913043" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/fragment_planejamento_financeiro.xml" value="0.36666666666666664" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/login.xml" value="0.3383152173913043" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/nav_header.xml" value="0.18034447821681865" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/nav_header_main.xml" value="0.33469202898550726" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/principal.xml" value="0.3383152173913043" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/toolbar.xml" value="0.3383152173913043" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/menu/main.xml" value="0.36666666666666664" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/menu/menu_nav.xml" value="0.36512820512820515" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3578125" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3578125" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/Login_Dark.xml" value="0.24583333333333332" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/Logoff.xml" value="0.24583333333333332" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/activity_mainBkp.xml" value="0.20989583333333334" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/app_bar_main.xml" value="0.2859375" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/app_bar_principal.xml" value="0.3423913043478261" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/cadastro_usuario.xml" value="0.24583333333333332" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/cancelar_conta.xml" value="0.1707193515704154" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/content_main.xml" value="0.21875" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/esqueceu_senha.xml" value="0.203125" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_cancelar_conta.xml" value="0.28532608695652173" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_home.xml" value="0.28532608695652173" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_logoff.xml" value="0.28532608695652173" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_metas.xml" value="0.28532608695652173" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_perfil.xml" value="0.28532608695652173" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_planejamento_financeiro.xml" value="0.25" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_receitas_despesas.xml" value="0.28532608695652173" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_slideshow.xml" value="0.28532608695652173" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/login.xml" value="0.20989583333333334" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/login_activity.xml" value="0.20989583333333334" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/logoff.xml" value="0.3423913043478261" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/nav_header.xml" value="0.1984375" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/nav_header_main.xml" value="0.21875" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/nav_header_mainbkp.xml" value="0.21875" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/principal.xml" value="0.278125" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/toolbar.xml" value="0.28532608695652173" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/menu/activity_main_drawer.xml" value="0.33489583333333334" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/menu/main.xml" value="0.33489583333333334" />
-        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/menu/menu_nav.xml" value="0.33489583333333334" />
       </map>
     </option>
   </component>
