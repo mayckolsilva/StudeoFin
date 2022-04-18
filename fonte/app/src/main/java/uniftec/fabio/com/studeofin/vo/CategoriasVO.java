@@ -43,4 +43,7 @@ public class CategoriasVO {
     public Integer getIdMeta() { return idMeta; }
 
     public void setIdMeta(Integer idMeta) { this.idMeta = idMeta; }
+
+    @Override
+    public String toString(){ return desCategoria;  }
 }
