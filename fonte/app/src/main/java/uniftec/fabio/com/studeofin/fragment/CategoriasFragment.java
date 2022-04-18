@@ -42,9 +42,7 @@ public class CategoriasFragment extends Fragment {
         binding.btnAddCategoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                catSelecionada = new CategoriasVO();
-                binding.edtDescCategoria.setText(null);
-                binding.rdgCategoriaTipo.clearCheck();
+                limpaTela();
             }
         });
 
@@ -68,6 +66,7 @@ public class CategoriasFragment extends Fragment {
                                 "( '" + binding.edtDescCategoria.getText().toString().trim() + "'," + indTipo + ","+ Global.getIdUsuario() + ")");
 
                     }
+                    limpaTela();
                     buscaCategorias();
                 }
             }
@@ -77,6 +76,7 @@ public class CategoriasFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 query.delete("categorias","id_categoria = ?", new String[]{String.valueOf(catSelecionada.getCodCategoria())});
+                limpaTela();
                 buscaCategorias();
             }
         });
@@ -111,6 +111,12 @@ public class CategoriasFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    private void limpaTela(){
+        binding.edtDescCategoria.setText(null);
+        binding.rdgCategoriaTipo.clearCheck();
+        catSelecionada = new CategoriasVO();
     }
 
     private boolean verificaCampos(){
