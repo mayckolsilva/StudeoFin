@@ -20,8 +20,15 @@
     <string name="excluir">Excluir</string>
     <string name="descricao">Descrição:</string>
     <string name="receita">Receita</string>
-    <string name="despesa">Despesa:</string>
-    <string name="meta">Meta:</string>
+    <string name="despesa">Despesa</string>
+    <string name="meta">Meta</string>
+    <string name="coluna_descricao">Descrição</string>
+    <string name="coluna_tipo">Tipo</string>
+    <string name="valor">Valor:</string>
+    <string name="coluna_valor">Valor</string>
+    <string name="coluna_categoria">Categoria</string>
+    <string name="categoria">Categoria:</string>
+    <string name="add_rec_desp">Adicionar Receita/Despesa</string>
 
     <string name="msg_campos_invalidos">Campos obrigatórios não preenchidos.</string>
     <string name="msg_falha_autenticacao">E-mail e/ou senha incorreto.</string>

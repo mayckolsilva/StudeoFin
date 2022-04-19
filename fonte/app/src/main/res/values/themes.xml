@@ -2,11 +2,11 @@
     <!-- Base application theme. -->
     <style name="Theme.StudeoFin" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/lightgrey</item>
+        <item name="colorPrimary">@color/grey</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/vermelho</item>
+        <item name="colorSecondary">@color/azul</item>
         <item name="colorSecondaryVariant">@color/black</item>
         <item name="colorOnSecondary">@color/vermelho</item>
         <!-- Status bar color. -->
