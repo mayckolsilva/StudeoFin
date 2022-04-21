@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
+        android:layout_marginHorizontal="12dp"
         android:orientation="horizontal">
 
         <TextView
@@ -60,18 +59,17 @@
 
     </LinearLayout>
 
-    <ListView android:id="@+id/lista_lancamentos"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginHorizontal="8dp"
-        android:layout_width="match_parent"/>
+        <ListView android:id="@+id/lista_lancamentos"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="12dp"
+            android:layout_width="match_parent"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp">
+            android:layout_marginHorizontal="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -98,7 +96,8 @@
                         android:inputType="text"
                         android:textSize="14dp" />
 
-        </LinearLayout>
+                  </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,7 +137,9 @@
                     android:layout_gravity="center">
                 </Spinner>
 
-        </LinearLayout>
+         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,11 +150,12 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_add_lancamento"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:text="@string/add_rec_desp"
                 android:background="@drawable/round_corner_button"
                 android:textAllCaps="false"
                 android:textSize="16dp"/>
+
         </LinearLayout>
 
             <LinearLayout
@@ -166,7 +168,7 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_salvar_lancamento"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_marginRight="4dp"
                     android:text="@string/salvar"
                     android:background="@drawable/round_corner_button"
@@ -177,7 +179,7 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_excluir_lancamento"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_marginLeft="4dp"
                     android:text="@string/excluir"
                     android:background="@drawable/round_corner_button"
@@ -186,8 +188,8 @@
                     android:layout_weight="1"/>
             </LinearLayout>
 
-        </LinearLayout>
+         </LinearLayout>
 
-    </LinearLayout>
+     </LinearLayout>
 
 </LinearLayout>

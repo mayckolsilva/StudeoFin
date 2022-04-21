@@ -3,16 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/drawable-xxhdpi/round_corner_image_button.xml" value="0.3585" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/drawable/border_edit_text.xml" value="0.3675" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/drawable/round_corner_button.xml" value="0.3675" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/cadastro_usuario.xml" value="0.3383152173913043" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/fragment_categorias.xml" value="0.36666666666666664" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/fragment_dicas_investimento.xml" value="0.36666666666666664" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/fragment_logoff.xml" value="0.36666666666666664" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/fragment_perfil.xml" value="0.36666666666666664" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/fragment_planejamento_financeiro.xml" value="0.36666666666666664" />
-        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
-        <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/login.xml" value="0.3383152173913043" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/logoff.xml" value="0.36666666666666664" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/nav_header.xml" value="0.33" />
         <entry key="..\:/CURSOS/AndroidStudio/TCC/StudeoFin/fonte/app/src/main/res/layout/nav_header_main.xml" value="0.33" />
