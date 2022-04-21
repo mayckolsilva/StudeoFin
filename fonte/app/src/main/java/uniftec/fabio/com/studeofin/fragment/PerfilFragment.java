@@ -1,27 +1,16 @@
 package uniftec.fabio.com.studeofin.fragment;
 
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
-
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
-
-import uniftec.fabio.com.studeofin.CadastroUsuarioActivity;
+import androidx.fragment.app.Fragment;
 import uniftec.fabio.com.studeofin.CancelarContaActivity;
-import uniftec.fabio.com.studeofin.LoginActivity;
 import uniftec.fabio.com.studeofin.R;
 import uniftec.fabio.com.studeofin.databinding.FragmentPerfilBinding;
 import uniftec.fabio.com.studeofin.global.Global;
@@ -42,6 +31,7 @@ public class PerfilFragment extends Fragment {
         binding.edtEmail.setText(Global.getDesEmail());
         binding.edtSobrenome.setText(Global.getDesSobreNome());
 
+
         binding.linkCancelarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,11 +44,11 @@ public class PerfilFragment extends Fragment {
                         null);
 
                 busca.moveToFirst();
-                if(busca.getCount()>0){
-                    Intent i = new Intent(getActivity(), CancelarContaActivity.class );
+                if (busca.getCount() > 0) {
+                    Intent i = new Intent(getActivity(), CancelarContaActivity.class);
                     startActivity(i);
-                } else{
-                    Toast.makeText(getActivity(),"Senha não confere, exclusão de conta cancelada!",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getActivity(), "Senha não confere, exclusão de conta cancelada!", Toast.LENGTH_LONG).show();
                 }
             }
         });
