@@ -214,7 +214,7 @@ public class ReceitasDespesasFragment extends Fragment {
     private void clickLancamento(final LancamentosVO lanc){
         lancamentoSelecionado = lanc;
         binding.edtDescLancamento.setText(lanc.getDesLancamento());
-        binding.edtValor.setText(String.valueOf(lanc.getVlrLancamento()));
+        binding.edtValor.setText(String.format("%.2f",lanc.getVlrLancamento()));
 
         for(Integer i=0;i<categorias.size();i++){
             if(categorias.get(i).getCodCategoria().equals(lanc.getCodCategoria() )){

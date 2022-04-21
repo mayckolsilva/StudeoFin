@@ -15,23 +15,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="left"
             android:inputType="date"
             android:text="@string/coluna_data"
             android:textColor="@color/black"
-            android:textSize="16dp">
-        </TextView>
+            android:textSize="16dp"></TextView>
 
         <TextView
             android:id="@+id/des_lancamento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_weight="1"
+            android:gravity="left"
             android:text="@string/coluna_descricao"
             android:textColor="@color/black"
-            android:textSize="16dp">
-        </TextView>
+            android:textSize="16dp"></TextView>
 
         <TextView
             android:id="@+id/des_lancamento_categoria"
@@ -39,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/coluna_categoria"
             android:textColor="@color/black"
             android:textSize="16dp">
@@ -52,12 +49,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="right"
             android:inputType="numberDecimal"
             android:text="@string/coluna_valor"
             android:textColor="@color/black"
-            android:textSize="16dp">
-        </TextView>
+            android:textSize="16dp"></TextView>
 
     </LinearLayout>
 
