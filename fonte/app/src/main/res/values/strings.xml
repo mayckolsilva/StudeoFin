@@ -35,6 +35,7 @@
     <string name="objetivo">Objetivo:</string>
     <string name="data">Data:</string>
     <string name="add_meta">Adicionar Meta</string>
+    <string name="coluna_lancamento">Lançamento</string>
 
 
     <string name="msg_campos_invalidos">Campos obrigatórios não preenchidos.</string>
