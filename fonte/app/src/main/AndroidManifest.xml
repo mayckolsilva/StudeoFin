@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="uniftec.fabio.com.studeofin">
 
-    <uses-permission android:name="android.permission.CAMERA" />
+    <!--uses-permission android:name="android.permission.CAMERA" /-->
+
+    <!--uses-feature
+        android:name="android.hardware.camera"/-->
 
     <application
         android:allowBackup="true"

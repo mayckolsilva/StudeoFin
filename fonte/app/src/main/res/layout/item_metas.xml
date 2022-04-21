@@ -10,7 +10,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/des_categoria"
+            android:id="@+id/meta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -20,11 +20,31 @@
         </TextView>
 
         <TextView
-            android:id="@+id/des_tipo"
+            android:id="@+id/meta_valor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/coluna_tipo"
+            android:textSize="16dp"
+            android:textColor="@color/black">
+        </TextView>
+
+        <TextView
+            android:id="@+id/meta_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/coluna_data"
+            android:textSize="16dp"
+            android:textColor="@color/black">
+        </TextView>
+
+        <TextView
+            android:id="@+id/meta_economizado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/coluna_economizado"
             android:textSize="16dp"
             android:textColor="@color/black">
         </TextView>
