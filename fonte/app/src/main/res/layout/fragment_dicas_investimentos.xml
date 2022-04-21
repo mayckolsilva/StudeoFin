@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.DicasInvestimentoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dica_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Uol Economia"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp">
+            <!--https://economia.uol.com.br/mais/  -->
+        </TextView>
+
+        <TextView
+            android:id="@+id/dica_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parceiro 2"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/dica_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parceiro 3"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/dica_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parceiro 4"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/dica_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parceiro 5"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp">
+        </TextView>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -30,13 +30,12 @@
     <string name="categoria">Categoria:</string>
     <string name="add_rec_desp">Adicionar Receita/Despesa</string>
     <string name="coluna_meta">Meta</string>
-    <string name="coluna_data">Data</string>
-    <string name="coluna_economizado">Economizado</string>
+    <string name="coluna_data">Data Prev.</string>
+    <string name="coluna_economizado">Vlr. Atingido</string>
     <string name="objetivo">Objetivo:</string>
     <string name="data">Data:</string>
     <string name="add_meta">Adicionar Meta</string>
     <string name="coluna_lancamento">Lançamento</string>
-
 
     <string name="msg_campos_invalidos">Campos obrigatórios não preenchidos.</string>
     <string name="msg_falha_autenticacao">E-mail e/ou senha incorreto.</string>
@@ -47,6 +46,7 @@
     <string name="msg_logoff_efetuado">Sessão encerrada.</string>
     <string name="msg_cadastro_efetuado">Cadastro efetuado com sucesso!</string>
     <string name="msg_excluir">Dados escluídos.</string>
+
 
     <string name="open_drawer">Abrir</string>
     <string name="close_drawer">Fechar</string>
