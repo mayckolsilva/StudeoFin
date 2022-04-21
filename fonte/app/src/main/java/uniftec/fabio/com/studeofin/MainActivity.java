@@ -27,18 +27,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         DrawerLayout drawer = binding.drawerLayout;
+
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_planejamento_financeiro, R.id.nav_gerir_receitas_despesas,
                 R.id.nav_controle_saldo, R.id.nav_alerta_gastos, R.id.nav_categorias,
                 R.id.nav_dicas_investimentos, R.id.nav_metas, R.id.nav_perfil, R.id.nav_sair)
                 .setOpenableLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     @Override

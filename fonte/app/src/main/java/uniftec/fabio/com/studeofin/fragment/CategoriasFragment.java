@@ -11,11 +11,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -110,6 +112,7 @@ public class CategoriasFragment extends Fragment {
                 clickCategoria(categorias.get(i));
             }
         });
+
         return root;
     }
 
@@ -121,9 +124,13 @@ public class CategoriasFragment extends Fragment {
 
     private boolean verificaCampos(){
 
-        if(binding.txtDescCategoria == null){
+        if(TextUtils.isEmpty(binding.edtDescCategoria.getText())){
+            binding.edtDescCategoria.requestFocus();
+            Toast.makeText(getContext(),"Preencher a descrição da categoria!", Toast.LENGTH_LONG).show();
             return false;
         } else if(binding.rdbDespesa.isChecked() == false && binding.rdbMeta.isChecked() == false && binding.rdbReceita.isChecked()==false){
+            binding.rdgCategoriaTipo.requestFocus();
+            Toast.makeText(getContext(),"Selecione o tipo da categoria!", Toast.LENGTH_LONG).show();
             return false;
         } else {
             return true;
@@ -138,11 +145,6 @@ public class CategoriasFragment extends Fragment {
             Cursor busca = query.rawQuery(" SELECT id_categoria, des_categoria, ind_tipo_categoria, id_meta " +
                                                 "FROM categorias " +
                                                 "WHERE id_usuario =  " + Global.getIdUsuario(),null);
-
-            int indiceIdCategoria = busca.getColumnIndex("id_categoria");
-            int indiceDesCategoria = busca.getColumnIndex("des_categoria");
-            int indiceIndTipo= busca.getColumnIndex("ind_tipo_categoria");
-            int indiceIdMeta = busca.getColumnIndex("id_meta");
 
             categorias = new ArrayList<CategoriasVO>();
             busca.moveToFirst();
