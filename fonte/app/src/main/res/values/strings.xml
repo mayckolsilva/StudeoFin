@@ -29,6 +29,13 @@
     <string name="coluna_categoria">Categoria</string>
     <string name="categoria">Categoria:</string>
     <string name="add_rec_desp">Adicionar Receita/Despesa</string>
+    <string name="coluna_meta">Meta</string>
+    <string name="coluna_data">Data</string>
+    <string name="coluna_economizado">Economizado</string>
+    <string name="objetivo">Objetivo:</string>
+    <string name="data">Data:</string>
+    <string name="add_meta">Adicionar Meta</string>
+
 
     <string name="msg_campos_invalidos">Campos obrigatórios não preenchidos.</string>
     <string name="msg_falha_autenticacao">E-mail e/ou senha incorreto.</string>
