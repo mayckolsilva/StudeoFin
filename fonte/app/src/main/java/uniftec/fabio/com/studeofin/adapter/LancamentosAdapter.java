@@ -54,7 +54,7 @@ public class LancamentosAdapter extends ArrayAdapter<LancamentosVO> {
 
             holder.getT2().setText(lancamentos.get(position).getDesLancamento());
             holder.getT3().setText(lancamentos.get(position).getDesCategoria());
-            holder.getT4().setText(String.valueOf(lancamentos.get(position).getVlrLancamento()));
+            holder.getT4().setText(String.format("%.2f",lancamentos.get(position).getVlrLancamento()));
 
             return view;
         } catch (Exception e) {
