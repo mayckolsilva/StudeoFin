@@ -11,37 +11,20 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-        android:gravity="center">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="12dp"
-                android:background="@color/lightgrey"
-                android:gravity="center"
-                android:text="@string/sair"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="22dp" />
-        </LinearLayout>
+        android:gravity="center"
+        android:layout_marginHorizontal="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingBottom="24dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp">
+            android:paddingBottom="24dp">
 
             <TextView
                 android:id="@+id/txtLogoff"
                 android:layout_width="355dp"
-                android:layout_height="300dp"
+                android:layout_height="400dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="24dp"
                 android:background="@color/white"
                 android:gravity="center"
@@ -54,10 +37,10 @@
                 android:id="@+id/btn_sair"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/round_corner_button"
-                android:padding="6dp"
+                android:padding="8dp"
                 android:text="@string/ok"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
@@ -67,8 +50,6 @@
                 android:id="@+id/btn_cancelar"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
                 android:background="@drawable/round_corner_button"
                 android:padding="6dp"
                 android:text="@string/cancelar"
