@@ -111,8 +111,10 @@ public class ReceitasDespesasFragment extends Fragment {
         query = getActivity().openOrCreateDatabase("studeofin", android.content.Context.MODE_PRIVATE,
                 null);
 
+
         carregarSpinnerCategoria();
         buscarLancamentos();
+        limparTela();
         return root;
     }
 
