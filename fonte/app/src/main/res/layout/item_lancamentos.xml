@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:background="#F3F3F3" android:layout_height="wrap_content" android:layout_width="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="4">
+
+        <TextView
+            android:id="@+id/des_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:inputType="date"
+            android:text="@string/coluna_data"
+            android:textColor="@color/black"
+            android:textSize="16dp"></TextView>
+
+        <TextView
+            android:id="@+id/des_lancamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/coluna_lancamento"
+            android:textColor="@color/black"
+            android:textSize="16dp"></TextView>
+
+        <TextView
+            android:id="@+id/des_lancamento_categoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/coluna_categoria"
+            android:textColor="@color/black"
+            android:textSize="16dp"></TextView>
+
+        <TextView
+            android:id="@+id/des_valor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:inputType="numberDecimal"
+            android:text="@string/coluna_valor"
+            android:textColor="@color/black"
+            android:textSize="16dp"></TextView>
+
+    </LinearLayout>
+
+</RelativeLayout>

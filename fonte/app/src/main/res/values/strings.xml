@@ -29,6 +29,9 @@
     <string name="coluna_categoria">Categoria</string>
     <string name="categoria">Categoria:</string>
     <string name="add_rec_desp">Adicionar Receita/Despesa</string>
+    <string name="coluna_lancamento">Lançamento</string>
+    <string name="coluna_data">Data</string>
+
 
     <string name="msg_campos_invalidos">Campos obrigatórios não preenchidos.</string>
     <string name="msg_falha_autenticacao">E-mail e/ou senha incorreto.</string>
