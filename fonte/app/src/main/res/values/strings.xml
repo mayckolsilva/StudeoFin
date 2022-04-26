@@ -63,4 +63,13 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="uol">Uol Economia</string>
+    <string name="me_poupe">Me Poupe</string>
+    <string name="primo_rico">Primo Rico</string>
+    <string name="investidor_sardinha">Investidor Sardinha</string>
+    <string name="fui_la">Canal Fui Lá e Fiz</string>
+    <string name="fonte">Fonte da Fortuna</string>
+
+
 </resources>
