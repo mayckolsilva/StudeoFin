@@ -63,7 +63,7 @@ public class ReceitasDespesasFragment extends Fragment {
                     query = getActivity().openOrCreateDatabase("studeofin", android.content.Context.MODE_PRIVATE,
                             null);
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Date dtaLanc = new Date();
                     String data = sdf.format(dtaLanc);
 
@@ -137,7 +137,7 @@ public class ReceitasDespesasFragment extends Fragment {
                     lancamento.setCodLancamento(buscalanc.getInt(0));
                     lancamento.setDesLancamento(buscalanc.getString(1));
                     lancamento.setCodCategoria(buscalanc.getInt(2));
-                    Date date = new SimpleDateFormat("dd/MM/yyyy").parse(buscalanc.getString(3));
+                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(buscalanc.getString(3));
                     lancamento.setDtaLancamento(date);
                     lancamento.setVlrLancamento(BigDecimal.valueOf(buscalanc.getDouble(4)));
                     lancamento.setDesCategoria(buscalanc.getString(5));

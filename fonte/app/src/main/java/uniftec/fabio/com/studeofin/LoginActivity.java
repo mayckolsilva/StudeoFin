@@ -31,8 +31,9 @@ public class LoginActivity extends Activity {
                 MODE_PRIVATE,
                 null);
 
+
             query.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, des_nome VARCHAR(50) NOT NULL, des_sobrenome VARCHAR(50) NOT NULL )");
-            query.execSQL("CREATE TABLE IF NOT EXISTS metas (id_meta INTEGER PRIMARY KEY AUTOINCREMENT, des_meta VARCHAR(100) NOT NULL, vlr_meta REAL, id_usuario INTEGER, FOREIGN KEY (id_usuario) references usuario(id_usuario) )");
+            query.execSQL("CREATE TABLE IF NOT EXISTS metas (id_meta INTEGER PRIMARY KEY AUTOINCREMENT, des_meta VARCHAR(100) NOT NULL, vlr_meta REAL, id_usuario INTEGER, dta_meta VARCHAR(20), FOREIGN KEY (id_usuario) references usuario(id_usuario) )");
             //0 - RECEITA 1- DESPESA 2-META
             query.execSQL("CREATE TABLE IF NOT EXISTS categorias (id_categoria INTEGER PRIMARY KEY AUTOINCREMENT, des_categoria VARCHAR(100) NOT NULL, ind_tipo_categoria INTEGER, id_meta INTEGER, id_usuario INTEGER, FOREIGN KEY (id_meta) REFERENCES meta (id_meta), FOREIGN KEY (id_usuario) REFERENCES usuarios (is_usuario) )");
             query.execSQL("CREATE TABLE IF NOT EXISTS lancamentos (id_lancamento INTEGER PRIMARY KEY AUTOINCREMENT, des_lancamento VARCHAR(100) NOT NULL, cod_categoria INTEGER, id_usuario INTEGER, dta_lancamento VARCHAR(20), vlr_lancamento REAL,FOREIGN KEY (cod_categoria) REFERENCES categorias (id_categoria), FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario) )");

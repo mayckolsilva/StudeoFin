@@ -8,25 +8,23 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import uniftec.fabio.com.studeofin.R;
-import uniftec.fabio.com.studeofin.vo.LancamentosVO;
+import uniftec.fabio.com.studeofin.vo.MetasVO;
 
-public class LancamentosAdapter extends ArrayAdapter<LancamentosVO> {
+public class MetasAdapter extends ArrayAdapter<MetasVO> {
+
 
     private final Context context;
-    private final ArrayList<LancamentosVO> lancamentos;
+    private final ArrayList<MetasVO> metas;
 
-    public LancamentosAdapter(Context context,  ArrayList<LancamentosVO> lancamentos) {
+    public MetasAdapter(Context context,  ArrayList<MetasVO> metas) {
 
-        super(context, R.layout.item_lancamentos, lancamentos);
+        super(context, R.layout.item_metas, metas);
         this.context = context;
-        this.lancamentos = lancamentos;
-
+        this.metas = metas;
 
     }
 
@@ -35,26 +33,26 @@ public class LancamentosAdapter extends ArrayAdapter<LancamentosVO> {
 
         try {
             View view;
-            ViewHolder2 holder;
+            ViewHolder3 holder;
             if (convertView == null) {
                 view = LayoutInflater.from(context)
                         .inflate(R.layout.item_lancamentos, parent, false);
-                holder = new ViewHolder2(view);
+                holder = new ViewHolder3(view);
                 view.setTag(holder);
             } else {
                 view = convertView;
-                holder = (ViewHolder2) view.getTag();
+                holder = (ViewHolder3) view.getTag();
             }
 
-            final LancamentosVO obj = lancamentos.get(position);
+            final MetasVO obj = metas.get(position);
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            String sData = sdf.format(lancamentos.get(position).getDtaLancamento());
-            holder.getT1().setText(sData);
+            String sData = sdf.format(metas.get(position).getDtaMeta());
 
-            holder.getT2().setText(lancamentos.get(position).getDesLancamento());
-            holder.getT3().setText(lancamentos.get(position).getDesCategoria());
-            holder.getT4().setText(String.format("%.2f",lancamentos.get(position).getVlrLancamento()));
+            holder.getT1().setText(metas.get(position).getDesMeta());
+            holder.getT2().setText(String.format("%.2f",metas.get(position).getVlrMeta()));
+            holder.getT3().setText(sData);
+            holder.getT4().setText(String.format("%.2f",metas.get(position).getVlrMetaAtingida()));
 
             return view;
         } catch (Exception e) {
@@ -65,17 +63,19 @@ public class LancamentosAdapter extends ArrayAdapter<LancamentosVO> {
     }
 }
 
-class ViewHolder2 {
+class ViewHolder3 {
     TextView t1;
     TextView t2;
     TextView t3;
     TextView t4;
 
-    public ViewHolder2(View view) {
-        t1 = (TextView) view.findViewById(R.id.des_data);
-        t2 = (TextView) view.findViewById(R.id.des_lancamento);
-        t3 = (TextView) view.findViewById(R.id.des_lancamento_categoria);
-        t4 = (TextView) view.findViewById(R.id.des_valor);
+    public ViewHolder3(View view) {
+        t1 = (TextView) view.findViewById(R.id.des_meta);
+        t2 = (TextView) view.findViewById(R.id.edt_vlrMeta);
+        t3 = (TextView) view.findViewById(R.id.edt_dtaMeta);
+        t4 = (TextView) view.findViewById(R.id.vlr_atingido_meta);
+
+
     }
 
     public TextView getT1() { return t1; }

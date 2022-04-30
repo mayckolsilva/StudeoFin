@@ -57,7 +57,7 @@
 
     </LinearLayout>
 
-    <ListView android:id="@+id/lista_lancamentos"
+    <ListView android:id="@+id/lista_metas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -88,7 +88,7 @@
                     android:textSize="14dp" />
 
                 <EditText
-                    android:id="@+id/edt_desc_lancamento"
+                    android:id="@+id/edt_desc_meta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -111,6 +111,7 @@
                 </TextView>
 
                 <EditText
+                    android:id="@+id/edt_vlrMeta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -129,11 +130,20 @@
                 </TextView>
 
                 <EditText
+                    android:id="@+id/edt_dtaMeta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="14dp"
-                    android:textColor="@color/black"/>
+                    android:enabled="false"
+                    android:inputType="date"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+                <ImageButton
+                    android:id="@+id/btn_calendario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_calendar_plus"/>
 
             </LinearLayout>
 
@@ -144,7 +154,7 @@
                 android:paddingTop="8dp">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_add_lancamento"
+                    android:id="@+id/btn_add_meta"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:text="@string/add_meta"
@@ -162,7 +172,7 @@
                 android:layout_weight="2">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_salvar_lancamento"
+                    android:id="@+id/btn_salvar_meta"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginRight="4dp"
@@ -173,7 +183,7 @@
                     android:layout_weight="1"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_excluir_lancamento"
+                    android:id="@+id/btn_excluir_meta"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginLeft="4dp"

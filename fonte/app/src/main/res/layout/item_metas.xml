@@ -10,27 +10,27 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/meta"
+            android:id="@+id/des_meta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/coluna_categoria"
+            android:text="@string/coluna_meta"
             android:textSize="16dp"
             android:textColor="@color/black">
         </TextView>
 
         <TextView
-            android:id="@+id/meta_valor"
+            android:id="@+id/edt_vlrMeta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/coluna_tipo"
+            android:text="@string/coluna_valor"
             android:textSize="16dp"
             android:textColor="@color/black">
         </TextView>
 
         <TextView
-            android:id="@+id/meta_data"
+            android:id="@+id/edt_dtaMeta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -40,7 +40,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/meta_economizado"
+            android:id="@+id/vlr_atingido_meta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
