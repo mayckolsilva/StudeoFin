@@ -133,8 +133,6 @@ public class DicasInvestimentoFragment extends Fragment {
         binding.infoTela.setText("Esta tela refere-se à busca de conhecimento e receber dicas sobre a educação financeira e investimentos." + '\n' +
         "Clicando em cima do nome, abrirá a página web de cada parceiro, clicando no ícone do vídeo, será encaminhado para o canal do Youtube do parceiro.");
 
-
-
         return root;
     }
 }

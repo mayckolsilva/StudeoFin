@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:gravity="left"
             android:inputType="date"
-            android:text="@string/coluna_data"
+            android:text="@string/data"
             android:textColor="@color/black"
             android:textSize="16dp">
         </TextView>

@@ -145,7 +145,7 @@ public class MetasFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 
-        String data = sdf.format(binding.edtDtaMeta.getText().toString().trim());
+        String data = sdf.format(dtaMeta);
 
         if(metaSelecionada.getCodMeta()!=null){
             ContentValues values = new ContentValues();
