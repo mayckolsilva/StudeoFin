@@ -39,7 +39,7 @@
         android:id="@+id/nav_dicas_investimentos"
         android:name="uniftec.fabio.com.studeofin.fragment.DicasInvestimentoFragment"
         android:label="Dicas de Investimento"
-        tools:layout="@layout/fragment_dicas_investimento" />
+        tools:layout="@layout/fragment_dicas_investimentos" />
 
     <fragment
         android:id="@+id/nav_metas"

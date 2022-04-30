@@ -19,7 +19,8 @@
             android:inputType="date"
             android:text="@string/coluna_data"
             android:textColor="@color/black"
-            android:textSize="16dp"></TextView>
+            android:textSize="16dp">
+        </TextView>
 
         <TextView
             android:id="@+id/des_lancamento"
@@ -29,7 +30,8 @@
             android:gravity="left"
             android:text="@string/coluna_descricao"
             android:textColor="@color/black"
-            android:textSize="16dp"></TextView>
+            android:textSize="16dp">
+        </TextView>
 
         <TextView
             android:id="@+id/des_lancamento_categoria"
@@ -53,7 +55,8 @@
             android:inputType="numberDecimal"
             android:text="@string/coluna_valor"
             android:textColor="@color/black"
-            android:textSize="16dp"></TextView>
+            android:textSize="16dp">
+        </TextView>
 
     </LinearLayout>
 
