@@ -124,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:text="@string/data"
+                    android:text="@string/coluna_data_prev"
                     android:textColor="@color/black"
                     android:layout_marginLeft="8dp">
                 </TextView>
