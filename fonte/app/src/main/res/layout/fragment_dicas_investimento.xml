@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/me_poupe"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="20dp">
 
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/uol"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="20dp">
 
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/primo_rico"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="20dp">
             </TextView>
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/fui_la"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="20dp">
             </TextView>
@@ -150,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/fonte"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="20dp">
             </TextView>
@@ -175,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/investidor_sardinha"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="20dp">
             </TextView>
