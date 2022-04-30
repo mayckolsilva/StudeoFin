@@ -106,6 +106,7 @@ public class MetasFragment extends Fragment {
                 null);
 
         limparTela();
+        buscarMetas();
         return root;
 
     }
@@ -114,7 +115,7 @@ public class MetasFragment extends Fragment {
     private void buscarMetas(){
         try{
 
-            Cursor busca = query.rawQuery(" SELECT id_meta, des_meta, vlr_meta, cod_categoria " +
+            Cursor busca = query.rawQuery(" SELECT id_meta, des_meta, vlr_meta, cod_categoria, dta_meta " +
                     "FROM metas " +
                     "WHERE id_usuario =  " + Global.getIdUsuario(),null);
 
@@ -127,12 +128,14 @@ public class MetasFragment extends Fragment {
                     meta.setDesMeta(busca.getString(1));
                     meta.setVlrMeta(BigDecimal.valueOf(busca.getDouble(2)));
                     meta.setCodCategoria(busca.getInt(3));
+                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(busca.getString(4));
+                    meta.setDtaMeta(date);
                     this.getMetas().add(meta);
                     busca.moveToNext();
                 }
             }
 
-            if(metas!=null){
+            if(metas.size() > 0){
                 binding.listaMetas.setAdapter(new MetasAdapter(getActivity(),metas));
             }
         } catch(Exception e){
@@ -154,6 +157,7 @@ public class MetasFragment extends Fragment {
             values.put("vlr_meta", binding.edtVlrMeta.getText().toString());
             values.put("dta_meta", data);
             query.update("metas", values,"id_meta = ?", new String[]{String.valueOf(metaSelecionada.getCodMeta())} );
+
         }else {
 
             try {
@@ -185,6 +189,7 @@ public class MetasFragment extends Fragment {
         binding.edtDescMeta.setText(null);
         binding.edtDtaMeta.setText(null);
         binding.edtVlrMeta.setText(null);
+        dtaMeta = null;
         metaSelecionada = new MetasVO();
     }
 

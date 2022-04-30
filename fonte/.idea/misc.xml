@@ -31,9 +31,11 @@
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/app_bar_principal.xml" value="0.3423913043478261" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/cadastro_usuario.xml" value="0.24583333333333332" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/cancelar_conta.xml" value="0.1707193515704154" />
+        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/content_main.xml" value="0.2" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/esqueceu_senha.xml" value="0.203125" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_categorias.xml" value="0.2713541666666667" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_dicas_investimento.xml" value="0.259375" />
+        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_home.xml" value="0.18541666666666667" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_metas.xml" value="0.22" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_perfil.xml" value="0.2441123188405797" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/fragment_receitas_despesas.xml" value="0.33" />
@@ -43,6 +45,7 @@
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/login.xml" value="0.20989583333333334" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/login_activity.xml" value="0.20989583333333334" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/logoff.xml" value="0.3423913043478261" />
+        <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/nav_header_main.xml" value="0.11626139817629179" />
         <entry key="..\:/StudeoFin/StudeoFin/fonte/app/src/main/res/layout/principal.xml" value="0.278125" />
       </map>
     </option>

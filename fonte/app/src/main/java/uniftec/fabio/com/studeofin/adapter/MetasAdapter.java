@@ -36,7 +36,7 @@ public class MetasAdapter extends ArrayAdapter<MetasVO> {
             ViewHolder3 holder;
             if (convertView == null) {
                 view = LayoutInflater.from(context)
-                        .inflate(R.layout.item_lancamentos, parent, false);
+                        .inflate(R.layout.item_metas, parent, false);
                 holder = new ViewHolder3(view);
                 view.setTag(holder);
             } else {
@@ -49,10 +49,12 @@ public class MetasAdapter extends ArrayAdapter<MetasVO> {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             String sData = sdf.format(metas.get(position).getDtaMeta());
 
-            holder.getT1().setText(metas.get(position).getDesMeta());
+            holder.getT1().setText(metas.get(position).getDesMeta().toString());
             holder.getT2().setText(String.format("%.2f",metas.get(position).getVlrMeta()));
             holder.getT3().setText(sData);
-            holder.getT4().setText(String.format("%.2f",metas.get(position).getVlrMetaAtingida()));
+
+            if(metas.get(position).getVlrMetaAtingida() != null)
+                holder.getT4().setText(String.format("%.2f",metas.get(position).getVlrMetaAtingida()));
 
             return view;
         } catch (Exception e) {
@@ -70,7 +72,7 @@ class ViewHolder3 {
     TextView t4;
 
     public ViewHolder3(View view) {
-        t1 = (TextView) view.findViewById(R.id.des_meta);
+        t1 = (TextView) view.findViewById(R.id.des_item_meta);
         t2 = (TextView) view.findViewById(R.id.edt_vlrMeta);
         t3 = (TextView) view.findViewById(R.id.edt_dtaMeta);
         t4 = (TextView) view.findViewById(R.id.vlr_atingido_meta);
