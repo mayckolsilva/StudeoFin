@@ -32,7 +32,7 @@ public class DicasInvestimentoFragment extends Fragment {
                 "https://fontedafortuna.com/",
                 "https://hackeandofinancas.com.br/"
         };
-
+      
         //páginas
         binding.dica1.setOnClickListener(new View.OnClickListener() {
             @Override

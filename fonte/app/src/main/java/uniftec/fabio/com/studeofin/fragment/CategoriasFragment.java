@@ -164,7 +164,7 @@ public class CategoriasFragment extends Fragment {
                 binding.listaCategorias.setAdapter(new CategoriasAdapter(getActivity(),categorias));
             }
         } catch(Exception e){
-            Log.println(Log.ERROR,"Categoria","Erro na busca da categoria" );
+            Log.println(Log.ERROR,"Categoria","Erro na busca das categorias" );
         }
     }
 
