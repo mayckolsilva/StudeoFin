@@ -6,7 +6,7 @@ public class CategoriasVO {
 
     private Integer codCategoria;
     private String desCategoria;
-    private Integer codUduario;
+    private Integer codUsuario;
     private Integer indTipo;
     private Integer idMeta;
 
@@ -26,12 +26,12 @@ public class CategoriasVO {
         this.desCategoria = desCategoria;
     }
 
-    public Integer getCodUduario() {
-        return codUduario;
+    public Integer getCodUsuario() {
+        return codUsuario;
     }
 
-    public void setCodUduario(Integer codUduario) {
-        this.codUduario = codUduario;
+    public void setCodUsuario(Integer codUsuario) {
+        this.codUsuario = codUsuario;
     }
 
     public Integer getIndTipo() { return indTipo; }

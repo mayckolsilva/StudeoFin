@@ -2,6 +2,8 @@ package uniftec.fabio.com.studeofin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
+import uniftec.fabio.com.studeofin.BD.DB;
+import uniftec.fabio.com.studeofin.vo.UsuariosVO;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,7 +17,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
     private EditText desNome, desSobrenome, desEmail, desSenha;
     private Button btnSalvar;
-    private SQLiteDatabase query;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,19 +29,21 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         desSenha = (EditText) findViewById(R.id.edtSenha);
         btnSalvar = (Button) findViewById(R.id.btn_salvar);
 
-
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(verificaCampos()){
                     try{
 
-                        query = openOrCreateDatabase("studeofin",
-                                MODE_PRIVATE,
-                                null);
+                        DB db = new DB(getApplicationContext());
 
-                        query.execSQL("INSERT INTO usuarios (des_email, des_senha, des_nome, des_sobrenome) VALUES " +
-                                "( '" + desEmail.getText().toString().trim() + "','" + desSenha.getText().toString().trim() + "','" + desNome.getText().toString().trim() + "','" + desSobrenome.getText().toString().trim() +"')");
+                        UsuariosVO usuario = new UsuariosVO();
+                        usuario.setDesNome(desNome.getText().toString().trim());
+                        usuario.setDesSobreNome(desSobrenome.getText().toString().trim());
+                        usuario.setDesEmail(desEmail.getText().toString().trim());
+                        usuario.setDesSenha(desSenha.getText().toString().trim());
+
+                        db.insereUsuario(usuario);
 
                         Toast.makeText(CadastroUsuarioActivity.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
 

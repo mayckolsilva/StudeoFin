@@ -1,12 +1,5 @@
 package uniftec.fabio.com.studeofin.fragment;
 
-import static android.content.Context.MODE_PRIVATE;
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
-
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,16 +14,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import uniftec.fabio.com.studeofin.BD.DB;
+import uniftec.fabio.com.studeofin.BD.requests.BuscaCategoriasRequest;
 import uniftec.fabio.com.studeofin.R;
 import uniftec.fabio.com.studeofin.adapter.CategoriasAdapter;
 import uniftec.fabio.com.studeofin.databinding.FragmentCategoriasBinding;
-import uniftec.fabio.com.studeofin.global.Global;
 import uniftec.fabio.com.studeofin.vo.CategoriasVO;
 
 public class CategoriasFragment extends Fragment {
 
     FragmentCategoriasBinding binding;
-    private SQLiteDatabase query;
     ArrayList<CategoriasVO> categorias;
     private CategoriasVO catSelecionada;
     private Integer indTipo;
@@ -54,20 +47,16 @@ public class CategoriasFragment extends Fragment {
 
                 if(verificaCampos()){
 
-                    query = getActivity().openOrCreateDatabase("studeofin", android.content.Context.MODE_PRIVATE,
-                            null);
+                    DB db = new DB(getContext());
 
-                    if(catSelecionada.getCodCategoria()!=null){
+                    CategoriasVO categoria = new CategoriasVO();
+                    categoria.setCodCategoria(catSelecionada.getCodCategoria());
+                    categoria.setDesCategoria(binding.edtDescCategoria.getText().toString().trim());
+                    categoria.setIndTipo(indTipo);
 
-                        ContentValues values = new ContentValues();
-                        values.put("des_categoria", binding.edtDescCategoria.getText().toString().trim());
-                        values.put("ind_tipo_categoria", indTipo);
-                        query.update("categorias", values,"id_categoria = ?", new String[]{String.valueOf(catSelecionada.getCodCategoria())} );
-                    } else {
-                        query.execSQL("INSERT INTO categorias (des_categoria, ind_tipo_categoria, id_usuario) VALUES " +
-                                "( '" + binding.edtDescCategoria.getText().toString().trim() + "'," + indTipo + ","+ Global.getIdUsuario() + ")");
+                    db.insereCategoria(categoria);
+                    db.close();
 
-                    }
                     limpaTela();
                     buscaCategorias();
                 }
@@ -77,7 +66,11 @@ public class CategoriasFragment extends Fragment {
         binding.btnExcluirCategoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                query.delete("categorias","id_categoria = ?", new String[]{String.valueOf(catSelecionada.getCodCategoria())});
+
+                DB db = new DB(getContext());
+                db.removeCategoria(catSelecionada.getCodCategoria());
+                db.close();
+
                 limpaTela();
                 buscaCategorias();
             }
@@ -113,6 +106,7 @@ public class CategoriasFragment extends Fragment {
             }
         });
 
+        catSelecionada = new CategoriasVO();
         return root;
     }
 
@@ -129,7 +123,7 @@ public class CategoriasFragment extends Fragment {
             Toast.makeText(getContext(),"Preencher a descrição da categoria!", Toast.LENGTH_LONG).show();
             return false;
         } else if(binding.rdbDespesa.isChecked() == false && binding.rdbMeta.isChecked() == false && binding.rdbReceita.isChecked()==false){
-            binding.rdgCategoriaTipo.requestFocus();
+
             Toast.makeText(getContext(),"Selecione o tipo da categoria!", Toast.LENGTH_LONG).show();
             return false;
         } else {
@@ -139,30 +133,14 @@ public class CategoriasFragment extends Fragment {
 
     private void buscaCategorias(){
         try{
-            query = getActivity().openOrCreateDatabase("studeofin", android.content.Context.MODE_PRIVATE,
-                    null);
 
-            Cursor busca = query.rawQuery(" SELECT id_categoria, des_categoria, ind_tipo_categoria, id_meta " +
-                                                "FROM categorias " +
-                                                "WHERE id_usuario =  " + Global.getIdUsuario(),null);
+            DB db = new DB(getContext());
 
-            categorias = new ArrayList<CategoriasVO>();
-            busca.moveToFirst();
-            if(busca.getCount()>0){
-                while(!busca.isAfterLast()){
-                    CategoriasVO categoria = new CategoriasVO();
-                    categoria.setCodCategoria(busca.getInt(0));
-                    categoria.setDesCategoria(busca.getString(1));
-                    categoria.setIndTipo(busca.getInt(2));
-                    categoria.setIdMeta(busca.getInt(3));
-                    this.getCategorias().add(categoria);
-                    busca.moveToNext();
-                }
-            }
+            BuscaCategoriasRequest req = new BuscaCategoriasRequest();
+            req.setbVerificaMeta(false);
 
-            if(categorias!=null){
-                binding.listaCategorias.setAdapter(new CategoriasAdapter(getActivity(),categorias));
-            }
+            binding.listaCategorias.setAdapter(new CategoriasAdapter(getActivity(), categorias = db.buscaCategorias(req)));
+
         } catch(Exception e){
             Log.println(Log.ERROR,"Categoria","Erro na busca das categorias" );
         }
@@ -173,6 +151,7 @@ public class CategoriasFragment extends Fragment {
         binding.edtDescCategoria.setText(categoria.getDesCategoria());
 
         catSelecionada = categoria;
+
         if(categoria.getIndTipo() == 0){
             binding.rdgCategoriaTipo.check(R.id.rdb_receita);
             indTipo = 0;

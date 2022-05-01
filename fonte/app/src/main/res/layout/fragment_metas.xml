@@ -29,8 +29,7 @@
             android:gravity="center"
             android:text="@string/coluna_valor"
             android:textSize="16dp"
-            android:textColor="@color/black"
-           >
+            android:textColor="@color/black">
         </TextView>
 
         <TextView
@@ -39,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/coluna_data"
+            android:text="@string/coluna_data_prev"
             android:textColor="@color/black"
             android:textSize="16dp">
         </TextView>

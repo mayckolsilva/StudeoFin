@@ -12,7 +12,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
+
 import uniftec.fabio.com.studeofin.databinding.ActivityMainBinding;
+import uniftec.fabio.com.studeofin.global.Global;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        final View header = navigationView.getHeaderView(0);
+        final TextView txt_usuario = (TextView) header.findViewById(R.id.nav_usuario);
+        txt_usuario.setText(Global.getDesNome() + " " + Global.getDesSobreNome());
 
     }
 
