@@ -36,7 +36,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:background="@color/white"
-                    android:enabled="false"
                     android:hint="@string/nome"
                     android:inputType="textEmailAddress"
                     android:textSize="14dp" />
@@ -53,7 +52,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:background="@color/white"
-                    android:enabled="false"
                     android:hint="@string/sobrenome"
                     android:inputType="textEmailAddress"
                     android:textSize="14dp" />
@@ -70,7 +68,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:background="@color/white"
-                    android:enabled="false"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:textSize="14dp" />

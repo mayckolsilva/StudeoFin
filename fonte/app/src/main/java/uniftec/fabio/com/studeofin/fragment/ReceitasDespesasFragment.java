@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import uniftec.fabio.com.studeofin.BD.DB;
+import uniftec.fabio.com.studeofin.BD.requests.BuscaLancamentosRequest;
 import uniftec.fabio.com.studeofin.adapter.LancamentosAdapter;
 import uniftec.fabio.com.studeofin.databinding.FragmentReceitasDespesasBinding;
 import uniftec.fabio.com.studeofin.global.Global;
@@ -37,20 +39,17 @@ public class ReceitasDespesasFragment extends Fragment {
     private Integer codCategoria;
     private LancamentosVO lancamentoSelecionado;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentReceitasDespesasBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
         binding.btnAddLancamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 limparTela();
-
             }
         });
 
@@ -60,30 +59,16 @@ public class ReceitasDespesasFragment extends Fragment {
 
                 if(verificaCampos()){
 
-                    query = getActivity().openOrCreateDatabase("studeofin", android.content.Context.MODE_PRIVATE,
-                            null);
+                    DB db = new DB(getContext());
+                    LancamentosVO lancamento = new LancamentosVO();
+                    lancamento.setCodLancamento(lancamentoSelecionado.getCodLancamento());
+                    lancamento.setCodCategoria(codCategoria);
+                    lancamento.setDesLancamento(binding.edtDescLancamento.getText().toString().trim());
+                    lancamento.setVlrLancamento(new BigDecimal(binding.edtValor.getText().toString().trim()));
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Date dtaLanc = new Date();
-                    String data = sdf.format(dtaLanc);
+                    db.insereLancamentos(lancamento);
+                    db.close();
 
-                    if(lancamentoSelecionado.getCodLancamento()!=null){
-
-                        ContentValues values = new ContentValues();
-                        values.put("des_lancamento", binding.edtDescLancamento.getText().toString().trim());
-                        values.put("cod_categoria", codCategoria);
-                        values.put("vlr_lancamento", binding.edtValor.getText().toString());
-                        values.put("dta_lancamento",data);
-                        query.update("lancamentos", values,"id_lancamento = ?", new String[]{String.valueOf(lancamentoSelecionado.getCodLancamento())} );
-                    } else {
-                        try {
-                            query.execSQL("INSERT INTO lancamentos (des_lancamento, cod_categoria, id_usuario, vlr_lancamento, dta_lancamento) VALUES " +
-                                    "( '" + binding.edtDescLancamento.getText().toString().trim() + "'," + codCategoria + "," + Global.getIdUsuario() + "," + binding.edtValor.getText() + ", '" +  data + "')");
-                        } catch (Exception e ){
-                            Log.println(Log.ERROR,"Lancamento","Erro ao salvar lançamento!");
-                        }
-
-                    }
                     limparTela();
                     buscarLancamentos();
                 }
@@ -100,10 +85,13 @@ public class ReceitasDespesasFragment extends Fragment {
         binding.btnExcluirLancamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                query.delete("lancamentos","id_lancamento = ?", new String[]{String.valueOf(lancamentoSelecionado.getCodLancamento())});
+
+                DB db = new DB(getContext());
+                db.removeLancamento(lancamentoSelecionado.getCodLancamento());
+                db.close();
+
                 limparTela();
                 buscarLancamentos();
-
             }
         });
 
@@ -122,35 +110,14 @@ public class ReceitasDespesasFragment extends Fragment {
 
         try{
 
-            Cursor buscalanc = query.rawQuery(" SELECT l.id_lancamento, l.des_lancamento, l.cod_categoria, l.dta_lancamento, l.vlr_lancamento, c.des_categoria " +
-                    " FROM lancamentos l" +
-                    "   JOIN categorias c ON (c.id_categoria = l.cod_categoria) " +
-                    " WHERE l.id_usuario =  " + Global.getIdUsuario() ,null);
+            DB db = new DB(getContext());
 
-            lancamentos = new ArrayList<LancamentosVO>();
+            BuscaLancamentosRequest req = new BuscaLancamentosRequest();
 
-            buscalanc.moveToFirst();
-
-            if(buscalanc.getCount()>0) {
-                while (!buscalanc.isAfterLast()) {
-                    LancamentosVO lancamento = new LancamentosVO();
-                    lancamento.setCodLancamento(buscalanc.getInt(0));
-                    lancamento.setDesLancamento(buscalanc.getString(1));
-                    lancamento.setCodCategoria(buscalanc.getInt(2));
-                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(buscalanc.getString(3));
-                    lancamento.setDtaLancamento(date);
-                    lancamento.setVlrLancamento(BigDecimal.valueOf(buscalanc.getDouble(4)));
-                    lancamento.setDesCategoria(buscalanc.getString(5));
-                    this.getLancamentos().add(lancamento);
-                    buscalanc.moveToNext();
-                }
-            }
-
-            if(lancamentos!=null){
-                binding.listaLancamentos.setAdapter(new LancamentosAdapter(getActivity(),lancamentos));
-            }
+            binding.listaLancamentos.setAdapter(new LancamentosAdapter(getActivity(),db.buscaLancamentos(req)));
 
         } catch (Exception e) {
+
             Log.println(Log.ERROR,"Lançamentos","Erro na busca dos lançamentos" );
 
         }
