@@ -1,8 +1,5 @@
 package uniftec.fabio.com.studeofin.fragment;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,15 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import uniftec.fabio.com.studeofin.BD.DB;
-import uniftec.fabio.com.studeofin.BD.requests.BuscaLancamentosRequest;
+import uniftec.fabio.com.studeofin.BD.requests.BuscaCategoriasRequest;
 import uniftec.fabio.com.studeofin.adapter.LancamentosAdapter;
 import uniftec.fabio.com.studeofin.databinding.FragmentReceitasDespesasBinding;
-import uniftec.fabio.com.studeofin.global.Global;
 import uniftec.fabio.com.studeofin.vo.CategoriasVO;
 import uniftec.fabio.com.studeofin.vo.LancamentosVO;
 
@@ -33,7 +27,6 @@ import uniftec.fabio.com.studeofin.vo.LancamentosVO;
 public class ReceitasDespesasFragment extends Fragment {
     private FragmentReceitasDespesasBinding binding;
 
-    private SQLiteDatabase query;
     private ArrayList<CategoriasVO> categorias;
     private ArrayList<LancamentosVO> lancamentos;
     private Integer codCategoria;
@@ -94,12 +87,6 @@ public class ReceitasDespesasFragment extends Fragment {
                 buscarLancamentos();
             }
         });
-
-
-        query = getActivity().openOrCreateDatabase("studeofin", android.content.Context.MODE_PRIVATE,
-                null);
-
-
         carregarSpinnerCategoria();
         buscarLancamentos();
         limparTela();
@@ -109,63 +96,38 @@ public class ReceitasDespesasFragment extends Fragment {
     private void buscarLancamentos(){
 
         try{
-
             DB db = new DB(getContext());
-
-            BuscaLancamentosRequest req = new BuscaLancamentosRequest();
-
-            binding.listaLancamentos.setAdapter(new LancamentosAdapter(getActivity(),db.buscaLancamentos(req)));
-
+            binding.listaLancamentos.setAdapter(new LancamentosAdapter(getActivity(),lancamentos = db.buscaLancamentos()));
         } catch (Exception e) {
-
             Log.println(Log.ERROR,"Lançamentos","Erro na busca dos lançamentos" );
-
         }
-
     }
     private void carregarSpinnerCategoria(){
         try{
 
-            Cursor busca = query.rawQuery(" SELECT id_categoria, des_categoria, ind_tipo_categoria, id_meta " +
-                    " FROM categorias " +
-                    " WHERE id_usuario =  " + Global.getIdUsuario() +
-                    " ORDER BY des_categoria",null);
+            DB db = new DB(getContext());
+            BuscaCategoriasRequest req = new BuscaCategoriasRequest();
+            req.setbVerificaMeta(false);
 
-            categorias = new ArrayList<CategoriasVO>();
 
-            busca.moveToFirst();
-            if(busca.getCount()>0){
-                while(!busca.isAfterLast()){
-                    CategoriasVO categoria = new CategoriasVO();
-                    categoria.setCodCategoria(busca.getInt(0));
-                    categoria.setDesCategoria(busca.getString(1));
-                    categoria.setIndTipo(busca.getInt(2));
-                    categoria.setIdMeta(busca.getInt(3));
-                    this.getCategorias().add(categoria);
-                    busca.moveToNext();
+            ArrayAdapter<CategoriasVO> adapter =  new ArrayAdapter<CategoriasVO>(getContext(), android.R.layout.simple_spinner_item, categorias = db.buscaCategorias(req));
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            binding.spinnerLancamento.setAdapter(adapter);
+
+            binding.spinnerLancamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    CategoriasVO categorias = (CategoriasVO) adapterView.getSelectedItem();
+                    codCategoria = categorias.getCodCategoria();
+
                 }
-            }
 
-            if(categorias!=null){
-                ArrayAdapter<CategoriasVO> adapter =  new ArrayAdapter<CategoriasVO>(getContext(), android.R.layout.simple_spinner_item, getCategorias());
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                binding.spinnerLancamento.setAdapter(adapter);
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
 
-                binding.spinnerLancamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        CategoriasVO categorias = (CategoriasVO) adapterView.getSelectedItem();
-                        codCategoria = categorias.getCodCategoria();
+                }
 
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
-                    }
-
-                });
-            }
+            });
         } catch(Exception e){
             Log.println(Log.ERROR,"Categoria","Erro na busca da categoria" );
         }
@@ -176,6 +138,7 @@ public class ReceitasDespesasFragment extends Fragment {
         binding.edtDescLancamento.setText(null);
         binding.edtValor.setText(null);
         lancamentoSelecionado = new LancamentosVO();
+
     }
 
     private void clickLancamento(final LancamentosVO lanc){
