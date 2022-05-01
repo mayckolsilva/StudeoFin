@@ -47,9 +47,11 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/me_poupe"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
-                android:textSize="20dp"></TextView>
+                android:textSize="20dp">
+
+            </TextView>
 
             <ImageView
                 android:id="@+id/image_mePoupe"
@@ -72,9 +74,11 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/uol"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
-                android:textSize="20dp"></TextView>
+                android:textSize="20dp">
+
+            </TextView>
 
             <ImageView
                 android:id="@+id/image_uol"
@@ -96,9 +100,10 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/primo_rico"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
-                android:textSize="20dp"></TextView>
+                android:textSize="20dp">
+            </TextView>
 
             <ImageView
                 android:id="@+id/image_primoRico"
@@ -120,9 +125,10 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/fui_la"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
-                android:textSize="20dp"></TextView>
+                android:textSize="20dp">
+            </TextView>
 
             <ImageView
                 android:id="@+id/image_fui"
@@ -144,9 +150,10 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/fonte"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
-                android:textSize="20dp"></TextView>
+                android:textSize="20dp">
+            </TextView>
 
             <ImageView
                 android:id="@+id/image_Fonte"
@@ -168,9 +175,10 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/investidor_sardinha"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
-                android:textSize="20dp"></TextView>
+                android:textSize="20dp">
+            </TextView>
 
             <ImageView
                 android:id="@+id/image_Sardinha"
