@@ -139,11 +139,14 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
 
         String sql = " SELECT id_categoria, des_categoria, ind_tipo_categoria, id_meta " +
-                "FROM categorias " +
-                "WHERE id_usuario =  " + Global.getIdUsuario();
+                     " FROM categorias " +
+                     " WHERE id_usuario =  " + Global.getIdUsuario();
+
 
         if (req.isbVerificaMeta()){
             sql += " ORDER BY id_categoria desc limit 1";
+        } else {
+            sql += " ORDER BY des_categoria";
         }
 
         Cursor busca = db.rawQuery(sql,null);
@@ -202,7 +205,7 @@ public class DB extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<LancamentosVO> buscaLancamentos(BuscaLancamentosRequest req){
+    public ArrayList<LancamentosVO> buscaLancamentos(){
         ArrayList<LancamentosVO> lancamentos = new ArrayList<LancamentosVO>();
 
         SQLiteDatabase db = getReadableDatabase();
