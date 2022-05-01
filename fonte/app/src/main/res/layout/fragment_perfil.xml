@@ -30,7 +30,7 @@
                 android:src="@drawable/img_usuario" />
 
             <ImageButton
-                android:id="@+id/btn_imagem_usuario"
+                android:id="@+id/btnImagemUsuario"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="110dp"
