@@ -31,6 +31,15 @@ public class PerfilFragment extends Fragment {
         binding.edtEmail.setText(Global.getDesEmail());
         binding.edtSobrenome.setText(Global.getDesSobreNome());
 
+        binding.btnImagemUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivity(intent);
+
+            }
+        });
+
 
         binding.linkCancelarConta.setOnClickListener(new View.OnClickListener() {
             @Override
