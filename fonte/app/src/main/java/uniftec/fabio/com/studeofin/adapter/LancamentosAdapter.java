@@ -27,7 +27,6 @@ public class LancamentosAdapter extends ArrayAdapter<LancamentosVO> {
         this.context = context;
         this.lancamentos = lancamentos;
 
-
     }
 
     @Override

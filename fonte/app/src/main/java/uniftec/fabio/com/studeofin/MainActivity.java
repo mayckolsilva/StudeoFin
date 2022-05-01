@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         final TextView txt_usuario = (TextView) header.findViewById(R.id.nav_usuario);
         txt_usuario.setText(Global.getDesNome() + " " + Global.getDesSobreNome());
 
-
-
     }
 
     @Override

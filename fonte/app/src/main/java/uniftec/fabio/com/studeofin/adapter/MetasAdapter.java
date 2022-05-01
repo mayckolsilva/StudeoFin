@@ -53,8 +53,11 @@ public class MetasAdapter extends ArrayAdapter<MetasVO> {
             holder.getT2().setText(String.format("%.2f",metas.get(position).getVlrMeta()));
             holder.getT3().setText(sData);
 
-            if(metas.get(position).getVlrMetaAtingida() != null)
+            if(metas.get(position).getVlrMetaAtingida() != null) {
                 holder.getT4().setText(String.format("%.2f",metas.get(position).getVlrMetaAtingida()));
+            } else {
+                holder.getT4().setText("");
+            }
 
             return view;
         } catch (Exception e) {

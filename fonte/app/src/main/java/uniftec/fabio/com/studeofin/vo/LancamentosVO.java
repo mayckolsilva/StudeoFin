@@ -1,5 +1,7 @@
 package uniftec.fabio.com.studeofin.vo;
 
+import android.text.Editable;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -68,4 +70,5 @@ public class LancamentosVO {
     public void setDesCategoria(String desCategoria) {
         this.desCategoria = desCategoria;
     }
+
 }

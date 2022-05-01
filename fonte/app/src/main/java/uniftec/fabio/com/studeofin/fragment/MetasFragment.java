@@ -27,6 +27,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import uniftec.fabio.com.studeofin.BD.DB;
+import uniftec.fabio.com.studeofin.BD.requests.BuscaCategoriasRequest;
+import uniftec.fabio.com.studeofin.BD.requests.BuscaLancamentosRequest;
+import uniftec.fabio.com.studeofin.BD.requests.RemoveMetaRequest;
+import uniftec.fabio.com.studeofin.adapter.LancamentosAdapter;
 import uniftec.fabio.com.studeofin.adapter.MetasAdapter;
 import uniftec.fabio.com.studeofin.databinding.FragmentMetasBinding;
 import uniftec.fabio.com.studeofin.global.Global;
@@ -52,7 +57,6 @@ public class MetasFragment extends Fragment {
         binding = FragmentMetasBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
         binding.listaMetas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -76,10 +80,15 @@ public class MetasFragment extends Fragment {
         binding.btnExcluirMeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                query.delete("categorias","id_categoria = ?",new String[]{String.valueOf(metaSelecionada.getCodCategoria())});
-                query.delete("metas","id_meta = ?", new String[]{String.valueOf(metaSelecionada.getCodMeta())});
-                limparTela();
-                buscarMetas();
+
+                if(metaSelecionada != null && metaSelecionada.getCodMeta() != null) {
+                    removeMeta();
+                    limparTela();
+                    buscarMetas();
+                } else {
+                    Toast.makeText(getContext(),"Nenhuma meta selecionada para exclusão!", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -90,7 +99,6 @@ public class MetasFragment extends Fragment {
             }
         });
 
-
         binding.btnCalendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,125 +108,108 @@ public class MetasFragment extends Fragment {
             }
         });
 
-
-
         query = getActivity().openOrCreateDatabase("studeofin", android.content.Context.MODE_PRIVATE,
                 null);
 
         limparTela();
         buscarMetas();
         return root;
-
     }
 
-
     private void buscarMetas(){
+
         try{
-
-            Cursor busca = query.rawQuery(" SELECT id_meta, des_meta, vlr_meta, cod_categoria, dta_meta " +
-                    "FROM metas " +
-                    "WHERE id_usuario =  " + Global.getIdUsuario(),null);
-
-            metas = new ArrayList<MetasVO>();
-            busca.moveToFirst();
-            if(busca.getCount()>0){
-                while(!busca.isAfterLast()){
-                    MetasVO meta = new MetasVO();
-                    meta.setCodMeta(busca.getInt(0));
-                    meta.setDesMeta(busca.getString(1));
-                    meta.setVlrMeta(BigDecimal.valueOf(busca.getDouble(2)));
-                    meta.setCodCategoria(busca.getInt(3));
-                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(busca.getString(4));
-                    meta.setDtaMeta(date);
-                    this.getMetas().add(meta);
-                    busca.moveToNext();
-                }
-            }
-
-            if(metas.size() > 0){
-                binding.listaMetas.setAdapter(new MetasAdapter(getActivity(),metas));
-            }
-        } catch(Exception e){
-            Log.println(Log.ERROR,"Metas","Erro na busca das metas" );
+            DB db = new DB(getContext());
+            BuscaLancamentosRequest req = new BuscaLancamentosRequest();
+            binding.listaMetas.setAdapter(new MetasAdapter(getActivity(),db.buscaMetas()));
+        } catch (Exception e) {
+            Log.println(Log.ERROR,"Lançamentos","Erro na busca dos lançamentos" );
         }
     }
 
     private void salvarMeta(){
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        DB db = new DB(getContext());
 
+        //Cadastro da categoria que vai ser vinculado com a meta:
 
-        String data = sdf.format(dtaMeta);
+        CategoriasVO categoria = new CategoriasVO();
+        categoria.setDesCategoria(binding.edtDescMeta.getText().toString().trim());
+        categoria.setIndTipo(2);
+        db.insereCategoria(categoria);
 
-        if(metaSelecionada.getCodMeta()!=null){
-            ContentValues values = new ContentValues();
-            values.put("des_meta", binding.edtDescMeta.getText().toString().trim());
-            values.put("id_meta", metaSelecionada.getCodMeta());
-            values.put("vlr_meta", binding.edtVlrMeta.getText().toString());
-            values.put("dta_meta", data);
-            query.update("metas", values,"id_meta = ?", new String[]{String.valueOf(metaSelecionada.getCodMeta())} );
+        //Verificação do código gerado da categoria
 
-        }else {
+        BuscaCategoriasRequest req = new BuscaCategoriasRequest();
+        req.setbVerificaMeta(true);
+        db.buscaCategorias(req);
+        ArrayList<CategoriasVO> buscaCategoria = new ArrayList<CategoriasVO>();
+        buscaCategoria = db.buscaCategorias(req);
+        codCategoria = buscaCategoria.get(0).getCodCategoria();
 
-            try {
-                query.execSQL("INSERT INTO categorias (des_categoria, ind_tipo_categoria, id_usuario) VALUES " +
-                        "( '" + binding.edtDescMeta.getText().toString().trim() + "'," + 2 + ","+ Global.getIdUsuario() + ")");
+        //Cadastro da Meta
+        MetasVO meta = new MetasVO();
+        meta.setCodMeta(metaSelecionada.getCodMeta());
+        meta.setDesMeta(binding.edtDescMeta.getText().toString().trim());
+        meta.setVlrMeta(new BigDecimal(binding.edtVlrMeta.getText().toString()));
+        meta.setDtaMeta(dtaMeta);
+        meta.setCodCategoria(codCategoria);
+        db.insereMeta(meta);
 
-
-                Cursor busca = query.rawQuery("SELECT id_categoria FROM categorias ORDER BY id_categoria DESC", null);
-
-                busca.moveToFirst();
-                if(busca.getCount()>0){
-                    codCategoria = busca.getInt(0);
-                }
-
-                query.execSQL("INSERT INTO metas (des_meta, cod_categoria, id_usuario, vlr_meta, dta_meta) VALUES " +
-                        "( '" + binding.edtDescMeta.getText().toString().trim() + "'," + codCategoria + "," + Global.getIdUsuario() + "," + binding.edtVlrMeta.getText() + ", '" +  data + "')");
-                limparTela();
-                buscarMetas();
-            } catch (Exception e ){
-                Log.println(Log.ERROR,"Lancamento","Erro ao salvar lançamento!");
-            }
-
-        }
-
+        limparTela();
+        buscarMetas();
 
     }
 
+    private void removeMeta(){
+        RemoveMetaRequest req = new RemoveMetaRequest();
+        req.setCodCategoria(metaSelecionada.getCodCategoria());
+        req.setCodMeta(metaSelecionada.getCodMeta());
+        DB db = new DB(getContext());
+        db.removeMeta(req);
+        db.close();
+    }
+
     private void limparTela(){
+
         binding.edtDescMeta.setText(null);
         binding.edtDtaMeta.setText(null);
         binding.edtVlrMeta.setText(null);
         dtaMeta = null;
         metaSelecionada = new MetasVO();
+
     }
 
     private void clickMeta(final MetasVO meta){
+
         metaSelecionada = meta;
+        dtaMeta = meta.getDtaMeta();
         binding.edtDescMeta.setText(meta.getDesMeta());
         binding.edtVlrMeta.setText(String.format("%.2f",meta.getVlrMeta()));
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String data = sdf.format(meta.getDtaMeta());
         binding.edtDtaMeta.setText(data);
+
     }
 
     private boolean verificaCampos(){
+
         if(TextUtils.isEmpty(binding.edtDescMeta.getText())){
             binding.edtDescMeta.requestFocus();
-            Toast.makeText(getContext(), "Preencher descrição da meta!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Preencher objetivo da meta!", Toast.LENGTH_LONG).show();
             return false;
         } else if (TextUtils.isEmpty(binding.edtVlrMeta.getText())){
             binding.edtVlrMeta.requestFocus();
             Toast.makeText(getContext(), "Preencher valor da meta!", Toast.LENGTH_LONG).show();
             return false;
         } else if (TextUtils.isEmpty(binding.edtDtaMeta.getText())){
-            binding.edtDtaMeta.requestFocus();
             Toast.makeText(getContext(), "Preencher a data estipulada para atingir a meta!", Toast.LENGTH_LONG).show();
             return false;
         } else{
             return true;
         }
+
     }
 
     public static class DatePickerFragmentFinal extends DialogFragment
@@ -257,7 +248,6 @@ public class MetasFragment extends Fragment {
             }
         }
     }
-
 
     public ArrayList<MetasVO> getMetas() {
         if (this.metas == null)
