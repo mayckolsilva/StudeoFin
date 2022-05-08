@@ -33,10 +33,10 @@
     <string name="msg_cadastro_efetuado">Cadastro efetuado com sucesso!</string>
     <string name="msg_campos_invalidos">Campos obrigatórios não preenchidos.</string>
     <string name="msg_email_enviado">Sua senha foi enviada para o seu e-mail.</string>
-    <string name="msg_excluir">Dados escluídos.</string>
+    <string name="msg_excluir">Dados excluídos.</string>
     <string name="msg_falha_autenticacao">E-mail e/ou senha incorreto.</string>
     <string name="msg_logoff_efetuado">Sessão encerrada.</string>
-    <string name="msg_nao_autenticado">Não autenticado, rever os campos preenchidos.</string>
+    <!--string name="msg_nao_autenticado">Não autenticado, rever os campos preenchidos.</string-->
     <string name="msg_salvar">Dados salvos.</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -65,7 +65,6 @@
     <string name="me_poupe">Me Poupe</string>
     <string name="primo_rico">Primo Rico</string>
     <string name="uol">Uol Economia</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
