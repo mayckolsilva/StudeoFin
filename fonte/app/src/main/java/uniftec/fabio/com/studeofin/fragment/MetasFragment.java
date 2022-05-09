@@ -31,6 +31,7 @@ import uniftec.fabio.com.studeofin.BD.DB;
 import uniftec.fabio.com.studeofin.BD.requests.BuscaCategoriasRequest;
 import uniftec.fabio.com.studeofin.BD.requests.BuscaLancamentosRequest;
 import uniftec.fabio.com.studeofin.BD.requests.RemoveMetaRequest;
+import uniftec.fabio.com.studeofin.R;
 import uniftec.fabio.com.studeofin.adapter.LancamentosAdapter;
 import uniftec.fabio.com.studeofin.adapter.MetasAdapter;
 import uniftec.fabio.com.studeofin.databinding.FragmentMetasBinding;
@@ -82,7 +83,7 @@ public class MetasFragment extends Fragment {
             public void onClick(View view) {
 
                 if(metaSelecionada != null && metaSelecionada.getCodMeta() != null) {
-                    removeMeta();
+                    excluirMeta();
                     limparTela();
                     buscarMetas();
                 } else {
@@ -156,18 +157,24 @@ public class MetasFragment extends Fragment {
         meta.setCodCategoria(codCategoria);
         db.insereMeta(meta);
 
-        limparTela();
-        buscarMetas();
+       if (metaSelecionada.getCodMeta() == null){
+           Toast.makeText(getContext(), getString(R.string.msg_salvar), Toast.LENGTH_LONG).show();
+       } else {
+           Toast.makeText(getContext(), getString(R.string.msg_atualizar), Toast.LENGTH_LONG ).show();
+       }
 
     }
 
-    private void removeMeta(){
+    private void excluirMeta(){
+
         RemoveMetaRequest req = new RemoveMetaRequest();
         req.setCodCategoria(metaSelecionada.getCodCategoria());
         req.setCodMeta(metaSelecionada.getCodMeta());
         DB db = new DB(getContext());
         db.removeMeta(req);
         db.close();
+        Toast.makeText(getContext(),getString(R.string.msg_excluir), Toast.LENGTH_LONG).show();
+
     }
 
     private void limparTela(){

@@ -46,17 +46,7 @@ public class CategoriasFragment extends Fragment {
             public void onClick(View view) {
 
                 if(verificaCampos()){
-
-                    DB db = new DB(getContext());
-
-                    CategoriasVO categoria = new CategoriasVO();
-                    categoria.setCodCategoria(catSelecionada.getCodCategoria());
-                    categoria.setDesCategoria(binding.edtDescCategoria.getText().toString().trim());
-                    categoria.setIndTipo(indTipo);
-
-                    db.insereCategoria(categoria);
-                    db.close();
-
+                    salvarCategoria();
                     limpaTela();
                     buscaCategorias();
                 }
@@ -67,10 +57,7 @@ public class CategoriasFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                DB db = new DB(getContext());
-                db.removeCategoria(catSelecionada.getCodCategoria());
-                db.close();
-
+                ExcluirCategoria();
                 limpaTela();
                 buscaCategorias();
             }
@@ -110,6 +97,35 @@ public class CategoriasFragment extends Fragment {
         return root;
     }
 
+    private void salvarCategoria(){
+
+        DB db = new DB(getContext());
+
+        CategoriasVO categoria = new CategoriasVO();
+        categoria.setCodCategoria(catSelecionada.getCodCategoria());
+        categoria.setDesCategoria(binding.edtDescCategoria.getText().toString().trim());
+        categoria.setIndTipo(indTipo);
+
+        db.insereCategoria(categoria);
+        db.close();
+
+        if(categoria.getCodCategoria() != null){
+            Toast.makeText(getContext(),getString(R.string.msg_atualizar),Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getContext(),getString(R.string.msg_salvar),Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    private void ExcluirCategoria(){
+
+        DB db = new DB(getContext());
+        db.removeCategoria(catSelecionada.getCodCategoria());
+        db.close();
+
+        Toast.makeText(getContext(),getString(R.string.msg_excluir),Toast.LENGTH_LONG).show();
+
+    }
     private void limpaTela(){
         binding.edtDescCategoria.setText(null);
         binding.rdgCategoriaTipo.clearCheck();

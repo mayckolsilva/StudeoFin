@@ -1,5 +1,6 @@
 package uniftec.fabio.com.studeofin.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,15 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+
 import androidx.fragment.app.Fragment;
 import uniftec.fabio.com.studeofin.CancelarContaActivity;
-import uniftec.fabio.com.studeofin.R;
 import uniftec.fabio.com.studeofin.databinding.FragmentPerfilBinding;
 import uniftec.fabio.com.studeofin.global.Global;
 
 public class PerfilFragment extends Fragment {
 
     private SQLiteDatabase query;
+    private static final int SELECAO_CAMERA = 1;
+    private static final int SELECAO_GALEIRA = 2;
+    private Intent data;
     FragmentPerfilBinding binding;
 
     @Override
@@ -31,17 +36,24 @@ public class PerfilFragment extends Fragment {
         binding.edtEmail.setText(Global.getDesEmail());
         binding.edtSobrenome.setText(Global.getDesSobreNome());
 
-        binding.btnImagemUsuario.setOnClickListener(new View.OnClickListener() {
+        binding.btnCamera.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("QueryPermissionsNeeded")
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivity(intent);
 
+                if(intent.resolveActivity(getActivity().getPackageManager())!= null) {
+                    //someActivityResultLauncher.launch(intent);
+                    startActivityForResult(intent, SELECAO_CAMERA);
+
+
+                }
             }
         });
 
 
         binding.linkCancelarConta.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
@@ -61,6 +73,7 @@ public class PerfilFragment extends Fragment {
                 }
             }
         });
+
         return root;
 
     }

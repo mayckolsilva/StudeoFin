@@ -35,7 +35,7 @@ public class LoginActivity extends Activity {
                     Intent i = new Intent(LoginActivity.this, MainActivity.class );
                     startActivity(i);
                 } else {
-                    Toast.makeText(LoginActivity.this, "Usuário inválido!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,getString(R.string.msg_falha_autenticacao), Toast.LENGTH_SHORT).show();
                 }
             }
         });

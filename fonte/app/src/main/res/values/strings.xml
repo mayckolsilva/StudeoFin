@@ -31,6 +31,8 @@
     <string name="meta">Meta</string>
     <string name="msg_atualizar">Dados atualizados.</string>
     <string name="msg_cadastro_efetuado">Cadastro efetuado com sucesso!</string>
+    <string name="msg_cadastro_erro">Este endereço de e-mail já está cadastrado no sistema. Cadastro recusado!</string>
+
     <string name="msg_campos_invalidos">Campos obrigatórios não preenchidos.</string>
     <string name="msg_email_enviado">Sua senha foi enviada para o seu e-mail.</string>
     <string name="msg_excluir">Dados excluídos.</string>
