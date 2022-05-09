@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import uniftec.fabio.com.studeofin.LoginActivity;
 import uniftec.fabio.com.studeofin.MainActivity;
@@ -33,11 +34,12 @@ public class LogoffFragment extends Fragment {
         btnSair = binding.btnSalvar;
         btnCancelar = binding.btnCancelar;
 
-
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().finishAffinity();
+                Toast.makeText(getActivity(),getString(R.string.msg_logoff_efetuado), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getActivity(), LoginActivity.class );
+                startActivity(i);
             }
         });
 

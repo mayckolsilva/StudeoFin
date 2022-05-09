@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import uniftec.fabio.com.studeofin.BD.DB;
 import uniftec.fabio.com.studeofin.BD.requests.BuscaCategoriasRequest;
+import uniftec.fabio.com.studeofin.R;
 import uniftec.fabio.com.studeofin.adapter.LancamentosAdapter;
 import uniftec.fabio.com.studeofin.databinding.FragmentReceitasDespesasBinding;
 import uniftec.fabio.com.studeofin.vo.CategoriasVO;
@@ -51,17 +52,7 @@ public class ReceitasDespesasFragment extends Fragment {
             public void onClick(View view) {
 
                 if(verificaCampos()){
-
-                    DB db = new DB(getContext());
-                    LancamentosVO lancamento = new LancamentosVO();
-                    lancamento.setCodLancamento(lancamentoSelecionado.getCodLancamento());
-                    lancamento.setCodCategoria(codCategoria);
-                    lancamento.setDesLancamento(binding.edtDescLancamento.getText().toString().trim());
-                    lancamento.setVlrLancamento(new BigDecimal(binding.edtValor.getText().toString().trim()));
-
-                    db.insereLancamentos(lancamento);
-                    db.close();
-
+                    salvarReceitaDespesa();
                     limparTela();
                     buscarLancamentos();
                 }
@@ -79,18 +70,45 @@ public class ReceitasDespesasFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                DB db = new DB(getContext());
-                db.removeLancamento(lancamentoSelecionado.getCodLancamento());
-                db.close();
-
+                ExcluirReceitaDespesa();
                 limparTela();
                 buscarLancamentos();
+
             }
         });
+
         carregarSpinnerCategoria();
         buscarLancamentos();
         limparTela();
+        binding.edtDescLancamento.requestFocus();
         return root;
+    }
+
+    private void salvarReceitaDespesa(){
+
+        DB db = new DB(getContext());
+        LancamentosVO lancamento = new LancamentosVO();
+        lancamento.setCodLancamento(lancamentoSelecionado.getCodLancamento());
+        lancamento.setCodCategoria(codCategoria);
+        lancamento.setDesLancamento(binding.edtDescLancamento.getText().toString().trim());
+        lancamento.setVlrLancamento(new BigDecimal(binding.edtValor.getText().toString().trim()));
+        db.insereLancamentos(lancamento);
+        db.close();
+
+        if(lancamento.getCodLancamento() != null){
+            Toast.makeText(getContext(),getString(R.string.msg_atualizar),Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getContext(),getString(R.string.msg_salvar),Toast.LENGTH_LONG).show();
+        }
+    }
+    private void ExcluirReceitaDespesa(){
+
+        DB db = new DB(getContext());
+        db.removeLancamento(lancamentoSelecionado.getCodLancamento());
+        db.close();
+
+        Toast.makeText(getContext(),getString(R.string.msg_excluir),Toast.LENGTH_LONG).show();
+
     }
 
     private void buscarLancamentos(){
@@ -109,7 +127,6 @@ public class ReceitasDespesasFragment extends Fragment {
             BuscaCategoriasRequest req = new BuscaCategoriasRequest();
             req.setbVerificaMeta(false);
 
-
             ArrayAdapter<CategoriasVO> adapter =  new ArrayAdapter<CategoriasVO>(getContext(), android.R.layout.simple_spinner_item, categorias = db.buscaCategorias(req));
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             binding.spinnerLancamento.setAdapter(adapter);
@@ -117,6 +134,7 @@ public class ReceitasDespesasFragment extends Fragment {
             binding.spinnerLancamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
                     CategoriasVO categorias = (CategoriasVO) adapterView.getSelectedItem();
                     codCategoria = categorias.getCodCategoria();
 
@@ -130,11 +148,13 @@ public class ReceitasDespesasFragment extends Fragment {
             });
         } catch(Exception e){
             Log.println(Log.ERROR,"Categoria","Erro na busca da categoria" );
+            e.printStackTrace();
         }
 
     }
 
     private void limparTela(){
+
         binding.edtDescLancamento.setText(null);
         binding.edtValor.setText(null);
         lancamentoSelecionado = new LancamentosVO();

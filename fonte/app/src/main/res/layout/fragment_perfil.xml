@@ -30,15 +30,24 @@
                 android:src="@drawable/img_usuario" />
 
             <ImageButton
-                android:id="@+id/btnImagemUsuario"
+                android:id="@+id/btnCamera"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="110dp"
+                android:background="@drawable/round_corner_image_button"
+                android:backgroundTint="@color/azul"
+                android:src="@drawable/ic_menu_camera"></ImageButton>
+
+            <ImageButton
+                android:id="@+id/btnGaleria"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="110dp"
                 android:background="@drawable/round_corner_image_button"
                 android:backgroundTint="@color/azul"
-                android:src="@drawable/ic_menu_camera">
-            </ImageButton>
+                android:src="@drawable/ic_menu_gallery"></ImageButton>
 
         </FrameLayout>
 
@@ -106,6 +115,7 @@
                 android:background="@color/white"
                 android:hint="@string/cadastrar_senha"
                 android:inputType="textPassword"
+                android:maxLength="20"
                 android:textSize="14dp" />
         </com.google.android.material.textfield.TextInputLayout>
 

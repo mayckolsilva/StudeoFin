@@ -3,6 +3,7 @@ package uniftec.fabio.com.studeofin;
 import androidx.appcompat.app.AppCompatActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 import uniftec.fabio.com.studeofin.BD.DB;
+import uniftec.fabio.com.studeofin.BD.requests.BuscaUsuarioRequest;
 import uniftec.fabio.com.studeofin.vo.UsuariosVO;
 
 import android.content.Intent;
@@ -37,18 +38,27 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
                         DB db = new DB(getApplicationContext());
 
-                        UsuariosVO usuario = new UsuariosVO();
-                        usuario.setDesNome(desNome.getText().toString().trim());
-                        usuario.setDesSobreNome(desSobrenome.getText().toString().trim());
-                        usuario.setDesEmail(desEmail.getText().toString().trim());
-                        usuario.setDesSenha(desSenha.getText().toString().trim());
+                        BuscaUsuarioRequest req = new BuscaUsuarioRequest();
+                        req.setDesEmail(desEmail.getText().toString().trim());
 
-                        db.insereUsuario(usuario);
+                        if(!db.buscaUsuario(req)) {
 
-                        Toast.makeText(CadastroUsuarioActivity.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                            UsuariosVO usuario = new UsuariosVO();
+                            usuario.setDesNome(desNome.getText().toString().trim());
+                            usuario.setDesSobreNome(desSobrenome.getText().toString().trim());
+                            usuario.setDesEmail(desEmail.getText().toString().trim());
+                            usuario.setDesSenha(desSenha.getText().toString().trim());
+                            db.insereUsuario(usuario);
 
-                        Intent i = new Intent(CadastroUsuarioActivity.this,LoginActivity.class );
-                        startActivity(i);
+                            Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msg_cadastro_efetuado), Toast.LENGTH_LONG).show();
+
+                            Intent i = new Intent(CadastroUsuarioActivity.this,LoginActivity.class );
+                            startActivity(i);
+
+                        } else {
+                            Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msg_cadastro_erro), Toast.LENGTH_LONG).show();
+                        }
+
                     } catch (Exception e){
                         e.printStackTrace();
                     }

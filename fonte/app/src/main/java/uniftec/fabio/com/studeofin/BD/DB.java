@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import uniftec.fabio.com.studeofin.BD.requests.BuscaCategoriasRequest;
-import uniftec.fabio.com.studeofin.BD.requests.BuscaLancamentosRequest;
 import uniftec.fabio.com.studeofin.BD.requests.BuscaUsuarioRequest;
 import uniftec.fabio.com.studeofin.BD.requests.RemoveMetaRequest;
 import uniftec.fabio.com.studeofin.global.Global;
@@ -33,7 +32,7 @@ public class DB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, des_nome VARCHAR(50) NOT NULL, des_sobrenome VARCHAR(50) NOT NULL )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, des_nome VARCHAR(20) NOT NULL, des_sobrenome VARCHAR(30) NOT NULL )");
         db.execSQL("CREATE TABLE IF NOT EXISTS metas (id_meta INTEGER PRIMARY KEY AUTOINCREMENT, des_meta VARCHAR(100) NOT NULL, vlr_meta REAL, id_usuario INTEGER, dta_meta VARCHAR(20), cod_categoria INTEGER, FOREIGN KEY (id_usuario) references usuario(id_usuario), FOREIGN KEY (cod_categoria) REFERENCES categorias(id_categoria) )");
         //0 - RECEITA 1- DESPESA 2-META
         db.execSQL("CREATE TABLE IF NOT EXISTS categorias (id_categoria INTEGER PRIMARY KEY AUTOINCREMENT, des_categoria VARCHAR(100) NOT NULL, ind_tipo_categoria INTEGER, id_meta INTEGER, id_usuario INTEGER, FOREIGN KEY (id_meta) REFERENCES meta (id_meta), FOREIGN KEY (id_usuario) REFERENCES usuarios (is_usuario) )");
@@ -84,8 +83,12 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String sql = " SELECT id_usuario, des_nome, des_sobrenome, des_email" +
                      " FROM usuarios " +
-                     " WHERE des_email = '" + req.getDesEmail() + "' " +
-                     " AND  des_senha = '" + req.getDesSenha() + "'";
+                     " WHERE des_email = '" + req.getDesEmail() + "' ";
+
+        if(req.getDesSenha()!= null){
+            sql +=  " AND  des_senha = '" + req.getDesSenha() + "'";
+        }
+
 
         Cursor busca = db.rawQuery(sql,null);
 

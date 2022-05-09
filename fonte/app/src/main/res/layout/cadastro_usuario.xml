@@ -38,6 +38,7 @@
                     android:background="@color/white"
                     android:hint="@string/nome"
                     android:inputType="textEmailAddress"
+                    android:maxLength="20"
                     android:textSize="14dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,6 +55,7 @@
                     android:background="@color/white"
                     android:hint="@string/sobrenome"
                     android:inputType="textEmailAddress"
+                    android:maxLength="30"
                     android:textSize="14dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,6 +88,7 @@
                     android:background="@color/white"
                     android:hint="@string/cadastrar_senha"
                     android:inputType="textPassword"
+                    android:maxLength="20"
                     android:textSize="14dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
