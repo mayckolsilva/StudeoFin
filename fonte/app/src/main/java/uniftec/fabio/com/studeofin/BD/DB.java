@@ -25,7 +25,7 @@ public class DB extends SQLiteOpenHelper {
 
     public DB(Context context) {
 
-        super(context, "studeofin",null,1);
+        super(context, "studeofin",null,2);
 
     }
 
@@ -73,7 +73,10 @@ public class DB extends SQLiteOpenHelper {
     public void removeUsuario(Integer codUsuario){
 
         SQLiteDatabase db = getWritableDatabase();
-        db.delete("usuarios","usuario = ?", new String[]{String.valueOf(codUsuario)});
+        db.delete("usuarios","id_usuario = ?", new String[]{String.valueOf(codUsuario)});
+        db.delete("metas","id_usuario = ?", new String[]{String.valueOf(codUsuario)});
+        db.delete("categorias","id_usuario = ?", new String[]{String.valueOf(codUsuario)});
+        db.delete("lancamentos","id_usuario = ?", new String[]{String.valueOf(codUsuario)});
         db.close();
 
     }
