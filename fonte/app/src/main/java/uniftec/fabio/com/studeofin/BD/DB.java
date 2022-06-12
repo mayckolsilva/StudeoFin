@@ -25,14 +25,14 @@ public class DB extends SQLiteOpenHelper {
 
     public DB(Context context) {
 
-        super(context, "studeofin",null,2);
+        super(context, "studeofin",null,4);
 
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, des_nome VARCHAR(20) NOT NULL, des_sobrenome VARCHAR(30) NOT NULL )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, des_nome VARCHAR(20) NOT NULL, des_sobrenome VARCHAR(30) NOT NULL, img_foto text )");
         db.execSQL("CREATE TABLE IF NOT EXISTS metas (id_meta INTEGER PRIMARY KEY AUTOINCREMENT, des_meta VARCHAR(100) NOT NULL, vlr_meta REAL, id_usuario INTEGER, dta_meta VARCHAR(20), cod_categoria INTEGER, FOREIGN KEY (id_usuario) references usuarios (id_usuario), FOREIGN KEY (cod_categoria) REFERENCES categorias(id_categoria) )");
         //0 - RECEITA 1- DESPESA 2-META
         db.execSQL("CREATE TABLE IF NOT EXISTS categorias (id_categoria INTEGER PRIMARY KEY AUTOINCREMENT, des_categoria VARCHAR(100) NOT NULL, ind_tipo_categoria INTEGER, id_meta INTEGER, id_usuario INTEGER, FOREIGN KEY (id_meta) REFERENCES metas (id_meta), FOREIGN KEY (id_usuario) REFERENCES usuarios (is_usuario) )");
@@ -60,6 +60,7 @@ public class DB extends SQLiteOpenHelper {
         dados.put("des_sobrenome", usuario.getDesSobreNome());
         dados.put("des_senha", usuario.getDesSenha());
         dados.put("des_email", usuario.getDesEmail());
+        dados.put("img_foto", usuario.getImgFoto());
 
         if(usuario.getIdUsuario() != null) {
             db.update("usuarios",dados,"id_usuario = ?",new String[]{String.valueOf(usuario.getIdUsuario())});
@@ -84,7 +85,7 @@ public class DB extends SQLiteOpenHelper {
     public Boolean buscaUsuario(BuscaUsuarioRequest req){
 
         SQLiteDatabase db = getReadableDatabase();
-        String sql = " SELECT id_usuario, des_nome, des_sobrenome, des_email" +
+        String sql = " SELECT id_usuario, des_nome, des_sobrenome, des_email, img_foto, des_senha" +
                      " FROM usuarios " +
                      " WHERE des_email = '" + req.getDesEmail() + "' ";
 
@@ -101,9 +102,9 @@ public class DB extends SQLiteOpenHelper {
             Global.setDesNome(busca.getString(1));
             Global.setDesSobreNome(busca.getString(2));
             Global.setDesEmail(busca.getString(3));
-
+            Global.setImgFoto(busca.getString(4));
+            Global.setDesSenha(busca.getString(5));
             db.close();
-
             return true;
         } else {
             return false;

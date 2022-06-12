@@ -30,38 +30,35 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         desSenha = (EditText) findViewById(R.id.edtSenha);
         btnSalvar = (Button) findViewById(R.id.btn_salvar);
 
-        btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(verificaCampos()){
-                    try{
+        btnSalvar.setOnClickListener(view -> {
+            if(verificaCampos()){
+                try{
 
-                        DB db = new DB(getApplicationContext());
+                    DB db = new DB(getApplicationContext());
 
-                        BuscaUsuarioRequest req = new BuscaUsuarioRequest();
-                        req.setDesEmail(desEmail.getText().toString().trim());
+                    BuscaUsuarioRequest req = new BuscaUsuarioRequest();
+                    req.setDesEmail(desEmail.getText().toString().trim());
 
-                        if(!db.buscaUsuario(req)) {
+                    if(!db.buscaUsuario(req)) {
 
-                            UsuariosVO usuario = new UsuariosVO();
-                            usuario.setDesNome(desNome.getText().toString().trim());
-                            usuario.setDesSobreNome(desSobrenome.getText().toString().trim());
-                            usuario.setDesEmail(desEmail.getText().toString().trim());
-                            usuario.setDesSenha(desSenha.getText().toString().trim());
-                            db.insereUsuario(usuario);
+                        UsuariosVO usuario = new UsuariosVO();
+                        usuario.setDesNome(desNome.getText().toString().trim());
+                        usuario.setDesSobreNome(desSobrenome.getText().toString().trim());
+                        usuario.setDesEmail(desEmail.getText().toString().trim());
+                        usuario.setDesSenha(desSenha.getText().toString().trim());
+                        db.insereUsuario(usuario);
 
-                            Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msg_cadastro_efetuado), Toast.LENGTH_LONG).show();
+                        Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msg_cadastro_efetuado), Toast.LENGTH_LONG).show();
 
-                            Intent i = new Intent(CadastroUsuarioActivity.this,LoginActivity.class );
-                            startActivity(i);
+                        Intent i = new Intent(CadastroUsuarioActivity.this,LoginActivity.class );
+                        startActivity(i);
 
-                        } else {
-                            Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msg_cadastro_erro), Toast.LENGTH_LONG).show();
-                        }
-
-                    } catch (Exception e){
-                        e.printStackTrace();
+                    } else {
+                        Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msg_cadastro_erro), Toast.LENGTH_LONG).show();
                     }
+
+                } catch (Exception e){
+                    e.printStackTrace();
                 }
             }
         });
