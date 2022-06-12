@@ -14,8 +14,10 @@ public class Global implements Serializable {
     private ArrayList<CategoriasVO> listCategorias;
     private static Integer idUsuario;
     private static String desEmail;
+    private static String desSenha;
     private static String desNome;
     private static String desSobreNome;
+    private static String imgFoto;
 
     public static Integer getIdUsuario() {
         return idUsuario;
@@ -45,9 +47,15 @@ public class Global implements Serializable {
         return desSobreNome;
     }
 
-    public static void setDesSobreNome(String desSobreNome) {
-        Global.desSobreNome = desSobreNome;
-    }
+    public static void setDesSobreNome(String desSobreNome) { Global.desSobreNome = desSobreNome;  }
+
+    public static String getDesSenha() { return desSenha; }
+
+    public static void setDesSenha(String desSenha) { Global.desSenha = desSenha; }
+
+    public static String getImgFoto() { return imgFoto; }
+
+    public static void setImgFoto(String imgFoto) { Global.imgFoto = imgFoto; }
 
     public ArrayList<CategoriasVO> getListCategorias() {
         if(this.listCategorias == null)

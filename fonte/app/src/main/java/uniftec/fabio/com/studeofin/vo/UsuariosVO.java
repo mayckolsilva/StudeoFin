@@ -7,6 +7,7 @@ public class UsuariosVO {
     private String desSobreNome;
     private String desEmail;
     private String desSenha;
+    private String imgFoto;
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -47,5 +48,10 @@ public class UsuariosVO {
     public void setDesSenha(String desSenha) {
         this.desSenha = desSenha;
     }
+
+    public String getImgFoto() { return imgFoto; }
+
+    public void setImgFoto(String imgFoto) { this.imgFoto = imgFoto; }
+
 
 }

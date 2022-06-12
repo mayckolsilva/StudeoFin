@@ -16,6 +16,7 @@ public class LoginActivity extends Activity {
     private EditText desEmail;
     private EditText desSenha;
     private TextView btnCriarConta;
+    private TextView btnEsqSenha;
     private Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class LoginActivity extends Activity {
         desSenha = (EditText) findViewById(R.id.input_senha);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnCriarConta = (TextView) findViewById(R.id.link_criar_conta);
+        btnEsqSenha = (TextView) findViewById(R.id.link_esq_senha);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +46,14 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(LoginActivity.this,CadastroUsuarioActivity.class );
+                startActivity(i);
+            }
+        });
+
+        btnEsqSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, EsqueceuSenha.class);
                 startActivity(i);
             }
         });
