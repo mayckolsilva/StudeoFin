@@ -38,7 +38,7 @@
     <string name="msg_excluir">Dados excluídos.</string>
     <string name="msg_falha_autenticacao">E-mail e/ou senha incorreto.</string>
     <string name="msg_logoff_efetuado">Sessão encerrada.</string>
-    <string name="msg_nao_autenticado">Não autenticado, rever os campos preenchidos.</string>
+    <!--string name="msg_nao_autenticado">Não autenticado, rever os campos preenchidos.</string-->
     <string name="msg_salvar">Dados salvos.</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -67,7 +67,6 @@
     <string name="me_poupe">Me Poupe</string>
     <string name="primo_rico">Primo Rico</string>
     <string name="uol">Uol Economia</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
