@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Meta: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/des_meta"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Data Prev: ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/dta_prevista"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Valor da meta: R$"
+            android:textSize="16dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/vlr_meta"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Valor atingido: R$">
+        </TextView>
+
+        <TextView
+            android:id="@+id/vlr_lancamentos_meta"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Valor mensal p/ lançamento: R$">
+        </TextView>
+
+        <TextView
+            android:id="@+id/vlr_mensal_meta"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

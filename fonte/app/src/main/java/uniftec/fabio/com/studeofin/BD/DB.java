@@ -1,5 +1,7 @@
 package uniftec.fabio.com.studeofin.BD;
 
+import static java.math.BigDecimal.*;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,9 +9,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import uniftec.fabio.com.studeofin.BD.requests.BuscaCategoriasRequest;
@@ -35,7 +40,7 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, des_email VARCHAR(50) NOT NULL, des_senha VARCHAR(20) NOT NULL, des_nome VARCHAR(20) NOT NULL, des_sobrenome VARCHAR(30) NOT NULL, img_foto text )");
         db.execSQL("CREATE TABLE IF NOT EXISTS metas (id_meta INTEGER PRIMARY KEY AUTOINCREMENT, des_meta VARCHAR(100) NOT NULL, vlr_meta REAL, id_usuario INTEGER, dta_meta VARCHAR(20), cod_categoria INTEGER, FOREIGN KEY (id_usuario) references usuarios (id_usuario), FOREIGN KEY (cod_categoria) REFERENCES categorias(id_categoria) )");
         //0 - RECEITA 1- DESPESA 2-META
-        db.execSQL("CREATE TABLE IF NOT EXISTS categorias (id_categoria INTEGER PRIMARY KEY AUTOINCREMENT, des_categoria VARCHAR(100) NOT NULL, ind_tipo_categoria INTEGER, id_meta INTEGER, id_usuario INTEGER, FOREIGN KEY (id_meta) REFERENCES metas (id_meta), FOREIGN KEY (id_usuario) REFERENCES usuarios (is_usuario) )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS categorias (id_categoria INTEGER PRIMARY KEY AUTOINCREMENT, des_categoria VARCHAR(100) NOT NULL, ind_tipo_categoria INTEGER, id_meta INTEGER, id_usuario INTEGER, FOREIGN KEY (id_meta) REFERENCES metas (id_meta), FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario) )");
         db.execSQL("CREATE TABLE IF NOT EXISTS lancamentos (id_lancamento INTEGER PRIMARY KEY AUTOINCREMENT, des_lancamento VARCHAR(100) NOT NULL, cod_categoria INTEGER, id_usuario INTEGER, dta_lancamento VARCHAR(20), vlr_lancamento REAL,FOREIGN KEY (cod_categoria) REFERENCES categorias (id_categoria), FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario) )");
 
     }
@@ -236,7 +241,7 @@ public class DB extends SQLiteOpenHelper {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                lancamento.setVlrLancamento(BigDecimal.valueOf(busca.getDouble(4)));
+                lancamento.setVlrLancamento(valueOf(busca.getDouble(4)));
                 lancamentos.add(lancamento);
                 busca.moveToNext();
             }
@@ -268,7 +273,6 @@ public class DB extends SQLiteOpenHelper {
         } else {
             db.insert("metas", null, dados);
         }
-
         db.close();
     }
 
@@ -306,12 +310,81 @@ public class DB extends SQLiteOpenHelper {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                meta.setVlrMeta(BigDecimal.valueOf(busca.getDouble(4)));
+                meta.setVlrMeta(valueOf(busca.getDouble(4)));
                 metas.add(meta);
                 busca.moveToNext();
             }
 
         }
+
         return metas;
+    }
+
+
+    public ArrayList<MetasVO> calculoPlanejamentoFinanceiro(){
+        ArrayList<MetasVO> metas = new ArrayList<MetasVO>();
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        String sql = " SELECT id_meta, des_meta, cod_categoria, dta_meta, vlr_meta " +
+                " FROM metas " +
+                " WHERE id_usuario =  " + Global.getIdUsuario();
+
+        Cursor busca = db.rawQuery(sql,null);
+
+        busca.moveToFirst();
+        if(busca.getCount()>0) {
+            while (!busca.isAfterLast()) {
+                MetasVO meta = new MetasVO();
+                meta.setCodMeta(busca.getInt(0));
+                meta.setDesMeta(busca.getString(1));
+                meta.setCodCategoria(busca.getInt(2));
+                try {
+                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(busca.getString(3));
+                    meta.setDtaMeta(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                meta.setVlrMeta(valueOf(busca.getDouble(4)));
+
+                //Verifica meses restantes para atingir o objetivo na data prevista
+
+                Calendar dtaMeta = Calendar.getInstance();
+                dtaMeta.setTime(meta.getDtaMeta());
+                Calendar dtaAtual = Calendar.getInstance();
+                int mesesRestantes = (dtaMeta.get(Calendar.YEAR) * 12 + dtaMeta.get(Calendar.MONTH)) -
+                        (dtaAtual.get(Calendar.YEAR) * 12 + dtaAtual.get(Calendar.MONTH));
+
+                //Verifica a soma dos lancamentos  da meta
+                SQLiteDatabase db2 = getReadableDatabase();
+                String sql2 = " SELECT SUM(vlr_lancamento) " +
+                        " FROM lancamentos " +
+                        " WHERE cod_categoria =  " + meta.getCodCategoria();
+                Cursor busca2 = db2.rawQuery(sql2,null);
+
+                busca2.moveToFirst();
+                if(busca2.getCount()>0) {
+                    while (!busca2.isAfterLast()) {
+                        BigDecimal vlrAtingido = (valueOf(busca2.getDouble(0)));
+                        meta.setVlrMetaAtingida(vlrAtingido);
+                        BigDecimal vlrLancMensal = meta.getVlrMeta().subtract(vlrAtingido);
+
+                        if(mesesRestantes > 0) {
+                            vlrLancMensal = vlrLancMensal.divide(new BigDecimal(mesesRestantes), 2, RoundingMode.HALF_EVEN);
+                        }
+                        meta.setVlrMetaMensal(vlrLancMensal);
+                        busca2.moveToNext();
+                    }
+                }
+                metas.add(meta);
+                db2.close();
+                busca.moveToNext();
+            }
+
+        }
+        db.close();
+
+        return metas;
+
     }
 }

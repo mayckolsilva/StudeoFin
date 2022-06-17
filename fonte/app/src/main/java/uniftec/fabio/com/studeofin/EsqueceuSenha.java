@@ -109,9 +109,6 @@ public class EsqueceuSenha extends AppCompatActivity {
 
             URL url = new URL("https://api.3wedesenv.com.br/MinhaEscolaTeen/rest/integracao/testeemail");
 
-//            Random gerarSenha = new Random();
-//            int novaSenha = gerarSenha.nextInt(999999) + 1;
-//            System.out.println(String.valueOf(novaSenha));
             String jsonEnvio = "{ \"assunto\": \"Conforme solicitação, segue a senha: " + Global.getDesSenha() + " \", \"mensagem\": \"StudeoFin - Recuperação de Senha\", \"destinatario\": \"" + desEmail.getText() + "\"}";
 
 
