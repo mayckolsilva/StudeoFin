@@ -16,15 +16,15 @@ import java.util.Locale;
 import uniftec.fabio.com.studeofin.R;
 import uniftec.fabio.com.studeofin.vo.MetasVO;
 
-public class MetasAdapter extends ArrayAdapter<MetasVO> {
+public class PlanejamentosAdapter extends ArrayAdapter<MetasVO> {
 
 
     private final Context context;
     private final ArrayList<MetasVO> metas;
 
-    public MetasAdapter(Context context,  ArrayList<MetasVO> metas) {
+    public PlanejamentosAdapter(Context context,  ArrayList<MetasVO> metas) {
 
-        super(context, R.layout.item_metas, metas);
+        super(context, R.layout.item_gerenciamento, metas);
         this.context = context;
         this.metas = metas;
 
@@ -35,15 +35,15 @@ public class MetasAdapter extends ArrayAdapter<MetasVO> {
 
         try {
             View view;
-            ViewHolder3 holder;
+            ViewHolder4 holder;
             if (convertView == null) {
                 view = LayoutInflater.from(context)
-                        .inflate(R.layout.item_metas, parent, false);
-                holder = new ViewHolder3(view);
+                        .inflate(R.layout.item_gerenciamento, parent, false);
+                holder = new ViewHolder4(view);
                 view.setTag(holder);
             } else {
                 view = convertView;
-                holder = (ViewHolder3) view.getTag();
+                holder = (ViewHolder4) view.getTag();
             }
 
             final MetasVO obj = metas.get(position);
@@ -55,13 +55,23 @@ public class MetasAdapter extends ArrayAdapter<MetasVO> {
             String sData = sdf.format(metas.get(position).getDtaMeta());
 
             holder.getT1().setText(metas.get(position).getDesMeta().toString());
+            //holder.getT2().setText(String.format("%.2f",metas.get(position).getVlrMeta()));
             holder.getT2().setText(dinheiro.format(metas.get(position).getVlrMeta()));
             holder.getT3().setText(sData);
 
             if(metas.get(position).getVlrMetaAtingida() != null) {
+                //holder.getT4().setText(String.format("%.2f",metas.get(position).getVlrMetaAtingida()));
                 holder.getT4().setText(dinheiro.format(metas.get(position).getVlrMetaAtingida()));
+
             } else {
                 holder.getT4().setText("");
+            }
+
+            if(metas.get(position).getVlrMetaMensal() != null) {
+               // holder.getT5().setText(String.format("%.2f",metas.get(position).getVlrMetaMensal()));
+                holder.getT5().setText(dinheiro.format(metas.get(position).getVlrMetaMensal()));
+            } else {
+                holder.getT5().setText("");
             }
 
             return view;
@@ -73,18 +83,19 @@ public class MetasAdapter extends ArrayAdapter<MetasVO> {
     }
 }
 
-class ViewHolder3 {
+class ViewHolder4 {
     TextView t1;
     TextView t2;
     TextView t3;
     TextView t4;
+    TextView t5;
 
-    public ViewHolder3(View view) {
-        t1 = (TextView) view.findViewById(R.id.des_item_meta);
-        t2 = (TextView) view.findViewById(R.id.edt_vlrMeta);
-        t3 = (TextView) view.findViewById(R.id.edt_dtaMeta);
-        t4 = (TextView) view.findViewById(R.id.vlr_atingido_meta);
-
+    public ViewHolder4(View view) {
+        t1 = (TextView) view.findViewById(R.id.des_meta);
+        t2 = (TextView) view.findViewById(R.id.vlr_meta);
+        t3 = (TextView) view.findViewById(R.id.dta_prevista);
+        t4 = (TextView) view.findViewById(R.id.vlr_lancamentos_meta);
+        t5 = (TextView) view.findViewById(R.id.vlr_mensal_meta);
 
     }
 
@@ -103,4 +114,8 @@ class ViewHolder3 {
     public TextView getT4() { return t4; }
 
     public void setT4(TextView t4) { this.t4 = t4; }
+
+    public TextView getT5() { return t5; }
+
+    public void setT5(TextView t5) { this.t5 = t5; }
 }

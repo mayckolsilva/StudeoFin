@@ -8,6 +8,7 @@ public class MetasVO {
     private String desMeta;
     private BigDecimal vlrMeta;
     private BigDecimal vlrMetaAtingida;
+    private BigDecimal vlrMetaMensal;
     private Date dtaMeta;
     private Integer codCategoria;
 
@@ -37,6 +38,14 @@ public class MetasVO {
 
     public BigDecimal getVlrMetaAtingida() {
         return vlrMetaAtingida;
+    }
+
+    public BigDecimal getVlrMetaMensal() {
+        return vlrMetaMensal;
+    }
+
+    public void setVlrMetaMensal(BigDecimal vlrMetaMensal) {
+        this.vlrMetaMensal = vlrMetaMensal;
     }
 
     public void setVlrMetaAtingida(BigDecimal vlrMetaAtingida) {

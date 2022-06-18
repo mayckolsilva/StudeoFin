@@ -10,8 +10,10 @@ import android.widget.Toast;
 
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import uniftec.fabio.com.studeofin.R;
 import uniftec.fabio.com.studeofin.vo.LancamentosVO;
@@ -47,13 +49,16 @@ public class LancamentosAdapter extends ArrayAdapter<LancamentosVO> {
 
             final LancamentosVO obj = lancamentos.get(position);
 
+            Locale localeBR = new Locale("pt","BR");
+            NumberFormat dinheiro = NumberFormat.getCurrencyInstance(localeBR);
+
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             String sData = sdf.format(lancamentos.get(position).getDtaLancamento());
             holder.getT1().setText(sData);
 
             holder.getT2().setText(lancamentos.get(position).getDesLancamento());
             holder.getT3().setText(lancamentos.get(position).getDesCategoria());
-            holder.getT4().setText(String.format("%.2f",lancamentos.get(position).getVlrLancamento()));
+            holder.getT4().setText(dinheiro.format(lancamentos.get(position).getVlrLancamento()));
 
             return view;
         } catch (Exception e) {
