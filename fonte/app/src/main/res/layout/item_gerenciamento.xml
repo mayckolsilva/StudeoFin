@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Valor da meta: R$"
+            android:text="Valor da meta: "
             android:textSize="16dp">
         </TextView>
 
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Valor atingido: R$">
+            android:text="Valor atingido: ">
         </TextView>
 
         <TextView
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Valor mensal p/ lançamento: R$">
+            android:text="Valor mensal p/ lançamento: ">
         </TextView>
 
         <TextView

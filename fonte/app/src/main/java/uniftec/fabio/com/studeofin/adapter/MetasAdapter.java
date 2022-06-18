@@ -8,8 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import uniftec.fabio.com.studeofin.R;
 import uniftec.fabio.com.studeofin.vo.MetasVO;
@@ -46,15 +48,18 @@ public class MetasAdapter extends ArrayAdapter<MetasVO> {
 
             final MetasVO obj = metas.get(position);
 
+            Locale localeBR = new Locale("pt","BR");
+            NumberFormat dinheiro = NumberFormat.getCurrencyInstance(localeBR);
+
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             String sData = sdf.format(metas.get(position).getDtaMeta());
 
             holder.getT1().setText(metas.get(position).getDesMeta().toString());
-            holder.getT2().setText(String.format("%.2f",metas.get(position).getVlrMeta()));
+            holder.getT2().setText(dinheiro.format(metas.get(position).getVlrMeta()));
             holder.getT3().setText(sData);
 
             if(metas.get(position).getVlrMetaAtingida() != null) {
-                holder.getT4().setText(String.format("%.2f",metas.get(position).getVlrMetaAtingida()));
+                holder.getT4().setText(dinheiro.format(metas.get(position).getVlrMetaAtingida()));
             } else {
                 holder.getT4().setText("");
             }
