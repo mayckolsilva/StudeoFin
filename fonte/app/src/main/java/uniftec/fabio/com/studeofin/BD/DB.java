@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,6 +20,7 @@ import uniftec.fabio.com.studeofin.BD.requests.BuscaCategoriasRequest;
 import uniftec.fabio.com.studeofin.BD.requests.BuscaUsuarioRequest;
 import uniftec.fabio.com.studeofin.BD.requests.RemoveMetaRequest;
 import uniftec.fabio.com.studeofin.global.Global;
+import uniftec.fabio.com.studeofin.vo.AlertaGastosVO;
 import uniftec.fabio.com.studeofin.vo.CategoriasVO;
 import uniftec.fabio.com.studeofin.vo.LancamentosVO;
 import uniftec.fabio.com.studeofin.vo.MetasVO;
@@ -42,7 +42,7 @@ public class DB extends SQLiteOpenHelper {
         //0 - RECEITA 1- DESPESA 2-META
         db.execSQL("CREATE TABLE IF NOT EXISTS categorias (id_categoria INTEGER PRIMARY KEY AUTOINCREMENT, des_categoria VARCHAR(100) NOT NULL, ind_tipo_categoria INTEGER, id_meta INTEGER, id_usuario INTEGER, FOREIGN KEY (id_meta) REFERENCES metas (id_meta), FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario) )");
         db.execSQL("CREATE TABLE IF NOT EXISTS lancamentos (id_lancamento INTEGER PRIMARY KEY AUTOINCREMENT, des_lancamento VARCHAR(100) NOT NULL, cod_categoria INTEGER, id_usuario INTEGER, dta_lancamento VARCHAR(20), vlr_lancamento REAL,FOREIGN KEY (cod_categoria) REFERENCES categorias (id_categoria), FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario) )");
-
+        db.execSQL("CREATE TABLE IF NOT EXISTS alerta_gastos (id_alerta INTEGER PRIMARY KEY AUTOINCREMENT, id_usuario INTEGER, vlr_alerta REAL, FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario))");
     }
 
     @Override
@@ -52,6 +52,7 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS metas");
         db.execSQL("DROP TABLE IF EXISTS categorias");
         db.execSQL("DROP TABLE IF EXISTS lancamentos");
+        db.execSQL("DROP TABLE IF EXISTS alerta_gastos");
 
     }
 
@@ -83,11 +84,12 @@ public class DB extends SQLiteOpenHelper {
         db.delete("metas","id_usuario = ?", new String[]{String.valueOf(codUsuario)});
         db.delete("categorias","id_usuario = ?", new String[]{String.valueOf(codUsuario)});
         db.delete("lancamentos","id_usuario = ?", new String[]{String.valueOf(codUsuario)});
+        db.delete("alerta_gastos","id_usuario = ?", new String[]{String.valueOf(codUsuario)});
         db.close();
 
     }
 
-    public Boolean buscaUsuario(BuscaUsuarioRequest req){
+    public boolean buscaUsuario(BuscaUsuarioRequest req){
 
         SQLiteDatabase db = getReadableDatabase();
         String sql = " SELECT id_usuario, des_nome, des_sobrenome, des_email, img_foto, des_senha" +
@@ -222,9 +224,10 @@ public class DB extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getReadableDatabase();
 
-        String sql = " SELECT id_lancamento, des_lancamento, cod_categoria, dta_lancamento, vlr_lancamento " +
-                     " FROM lancamentos " +
-                     " WHERE id_usuario =  " + Global.getIdUsuario();
+        String sql = " SELECT l.id_lancamento, l.des_lancamento, l.cod_categoria, l.dta_lancamento, l.vlr_lancamento, c.des_categoria " +
+                     " FROM lancamentos l" +
+                     "  LEFT JOIN categorias c ON (c.id_categoria = l.cod_categoria)" +
+                     " WHERE l.id_usuario =  " + Global.getIdUsuario();
 
         Cursor busca = db.rawQuery(sql,null);
 
@@ -242,6 +245,7 @@ public class DB extends SQLiteOpenHelper {
                     e.printStackTrace();
                 }
                 lancamento.setVlrLancamento(valueOf(busca.getDouble(4)));
+                lancamento.setDesCategoria(busca.getString(5));
                 lancamentos.add(lancamento);
                 busca.moveToNext();
             }
@@ -314,9 +318,7 @@ public class DB extends SQLiteOpenHelper {
                 metas.add(meta);
                 busca.moveToNext();
             }
-
         }
-
         return metas;
     }
 
@@ -327,8 +329,8 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
 
         String sql = " SELECT id_meta, des_meta, cod_categoria, dta_meta, vlr_meta " +
-                " FROM metas " +
-                " WHERE id_usuario =  " + Global.getIdUsuario();
+                     " FROM metas " +
+                     " WHERE id_usuario =  " + Global.getIdUsuario();
 
         Cursor busca = db.rawQuery(sql,null);
 
@@ -387,4 +389,90 @@ public class DB extends SQLiteOpenHelper {
         return metas;
 
     }
+
+
+    public AlertaGastosVO buscaAlertaGastos (){
+
+        AlertaGastosVO alerta = new AlertaGastosVO();
+        SQLiteDatabase db = getReadableDatabase();
+
+        String sql = " SELECT id_alerta, vlr_alerta " +
+                     " FROM alerta_gastos " +
+                     " WHERE id_usuario =  " + Global.getIdUsuario();
+
+        Cursor busca = db.rawQuery(sql,null);
+
+        busca.moveToFirst();
+        if(busca.getCount()>0) {
+            while (!busca.isAfterLast()) {
+                alerta.setCodAlerta(busca.getInt(0));
+                alerta.setVlr_alerta(valueOf(busca.getDouble(1)));
+                busca.moveToNext();
+            }
+        }
+        alerta.setId_usuario(Global.getIdUsuario());
+        return alerta;
+    }
+    public void salvarAlertaGastos(AlertaGastosVO req){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues dados = new ContentValues();
+        dados.put("id_alerta", req.getCodAlerta());
+        dados.put("id_usuario",Global.getIdUsuario());
+        dados.put("vlr_alerta", String.valueOf(req.getVlr_alerta()));
+
+        if(req.getCodAlerta()!=null){
+            db.update("alerta_gastos", dados,"id_alerta = ?", new String[]{String.valueOf(req.getCodAlerta())});
+        } else{
+            db.insert("alerta_gastos",null,dados);
+        }
+
+        db.close();
+    }
+
+    public void removeALertaGastos(AlertaGastosVO req){
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete("alerta_gastos","id_alerta = ?", new String[]{String.valueOf(req.getCodAlerta())});
+        db.close();
+
+    }
+
+    public boolean alertaGastos (BigDecimal alerta) {
+
+
+        Calendar dtaAtual = Calendar.getInstance();
+
+        String ano = String.valueOf(dtaAtual.get(Calendar.YEAR));
+
+        String mes = String.valueOf(dtaAtual.get(Calendar.MONTH) + 1);
+        if(dtaAtual.get(Calendar.MONTH) + 1 <10){
+            mes = "0" + mes;
+        }
+
+        String dtaInicial = "'" + ano + "-" + mes + "-01" + "'";
+        SQLiteDatabase db = getReadableDatabase();
+        String sql = " SELECT SUM(l.vlr_lancamento) " +
+                     " FROM lancamentos l" +
+                     "   LEFT JOIN categorias c ON (c.id_categoria = l.cod_categoria)" +
+                     " WHERE l.id_usuario =  " + Global.getIdUsuario() +
+                     " AND c.ind_tipo_categoria = 1" +
+                     " AND l.dta_lancamento >= " + dtaInicial ;
+        Cursor busca = db.rawQuery(sql,null);
+
+        busca.moveToFirst();
+        if(busca.getCount()>0) {
+            while (!busca.isAfterLast()) {
+                BigDecimal vlrLancamentos = (valueOf(busca.getDouble(0)));
+                if(vlrLancamentos.compareTo(alerta) == 1){
+                    return true;
+                } else{
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
 }

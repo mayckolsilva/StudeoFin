@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Valor para alerta de gastos mensais:"
+            android:text="Valor para alerta de gastos mensais: R$"
             android:textSize="14dp" />
 
         <EditText
@@ -35,7 +35,7 @@
         android:padding="10dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_salvar_meta"
+            android:id="@+id/btn_salvar_alerta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/salvar"
