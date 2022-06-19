@@ -21,6 +21,7 @@ import uniftec.fabio.com.studeofin.BD.requests.BuscaCategoriasRequest;
 import uniftec.fabio.com.studeofin.R;
 import uniftec.fabio.com.studeofin.adapter.LancamentosAdapter;
 import uniftec.fabio.com.studeofin.databinding.FragmentReceitasDespesasBinding;
+import uniftec.fabio.com.studeofin.vo.AlertaGastosVO;
 import uniftec.fabio.com.studeofin.vo.CategoriasVO;
 import uniftec.fabio.com.studeofin.vo.LancamentosVO;
 
@@ -31,7 +32,9 @@ public class ReceitasDespesasFragment extends Fragment {
     private ArrayList<CategoriasVO> categorias;
     private ArrayList<LancamentosVO> lancamentos;
     private Integer codCategoria;
+    private Integer indTipoCategoria;
     private LancamentosVO lancamentoSelecionado;
+    private AlertaGastosVO alertaGastos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,6 +82,7 @@ public class ReceitasDespesasFragment extends Fragment {
 
         carregarSpinnerCategoria();
         buscarLancamentos();
+        buscarAlertaGastos();
         limparTela();
         binding.edtDescLancamento.requestFocus();
         return root;
@@ -94,6 +98,13 @@ public class ReceitasDespesasFragment extends Fragment {
         lancamento.setVlrLancamento(new BigDecimal(binding.edtValor.getText().toString().trim()));
         db.insereLancamentos(lancamento);
         db.close();
+
+        if(indTipoCategoria == 1 && alertaGastos.getVlr_alerta() != null){
+            DB db2 = new DB(getContext());
+            if(db2.alertaGastos(alertaGastos.getVlr_alerta())){
+                Toast.makeText(getContext(),"Atenção!! Lançamentos de despesas excederam o valor do alerta de gastos.",Toast.LENGTH_LONG).show();
+            };
+        }
 
         if(lancamento.getCodLancamento() != null){
             Toast.makeText(getContext(),getString(R.string.msg_atualizar),Toast.LENGTH_LONG).show();
@@ -116,8 +127,19 @@ public class ReceitasDespesasFragment extends Fragment {
         try{
             DB db = new DB(getContext());
             binding.listaLancamentos.setAdapter(new LancamentosAdapter(getActivity(),lancamentos = db.buscaLancamentos()));
+            db.close();
         } catch (Exception e) {
             Log.println(Log.ERROR,"Lançamentos","Erro na busca dos lançamentos" );
+        }
+    }
+
+    private  void buscarAlertaGastos(){
+        try{
+            DB db = new DB(getContext());
+            alertaGastos = db.buscaAlertaGastos();
+            db.close();
+        } catch (Exception e) {
+            Log.println(Log.ERROR,"Alerta de Gastos","Erro na busca do alerta de gastos" );
         }
     }
     private void carregarSpinnerCategoria(){
@@ -137,6 +159,7 @@ public class ReceitasDespesasFragment extends Fragment {
 
                     CategoriasVO categorias = (CategoriasVO) adapterView.getSelectedItem();
                     codCategoria = categorias.getCodCategoria();
+                    indTipoCategoria = categorias.getIndTipo();
 
                 }
 
@@ -146,6 +169,8 @@ public class ReceitasDespesasFragment extends Fragment {
                 }
 
             });
+
+            db.close();
         } catch(Exception e){
             Log.println(Log.ERROR,"Categoria","Erro na busca da categoria" );
             e.printStackTrace();
@@ -218,5 +243,15 @@ public class ReceitasDespesasFragment extends Fragment {
 
     public void setLancamentos(ArrayList<LancamentosVO> lancamentos) {
         this.lancamentos = lancamentos;
+    }
+
+    public AlertaGastosVO getAlertaGastos() {
+        if(this.alertaGastos == null)
+            this.alertaGastos = new AlertaGastosVO();
+        return alertaGastos;
+    }
+
+    public void setAlertaGastos(AlertaGastosVO alertaGastos) {
+        this.alertaGastos = alertaGastos;
     }
 }

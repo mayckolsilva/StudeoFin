@@ -97,4 +97,5 @@ class ViewHolder2 {
     public TextView getT4() { return t4; }
 
     public void setT4(TextView t4) { this.t4 = t4; }
+
 }
