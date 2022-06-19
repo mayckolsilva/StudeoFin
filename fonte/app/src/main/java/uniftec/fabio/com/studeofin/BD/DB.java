@@ -441,17 +441,14 @@ public class DB extends SQLiteOpenHelper {
 
     public boolean alertaGastos (BigDecimal alerta) {
 
-
         Calendar dtaAtual = Calendar.getInstance();
-
         String ano = String.valueOf(dtaAtual.get(Calendar.YEAR));
-
         String mes = String.valueOf(dtaAtual.get(Calendar.MONTH) + 1);
         if(dtaAtual.get(Calendar.MONTH) + 1 <10){
             mes = "0" + mes;
         }
-
         String dtaInicial = "'" + ano + "-" + mes + "-01" + "'";
+
         SQLiteDatabase db = getReadableDatabase();
         String sql = " SELECT SUM(l.vlr_lancamento) " +
                      " FROM lancamentos l" +
@@ -459,6 +456,7 @@ public class DB extends SQLiteOpenHelper {
                      " WHERE l.id_usuario =  " + Global.getIdUsuario() +
                      " AND c.ind_tipo_categoria = 1" +
                      " AND l.dta_lancamento >= " + dtaInicial ;
+
         Cursor busca = db.rawQuery(sql,null);
 
         busca.moveToFirst();
