@@ -203,7 +203,7 @@ public class DB extends SQLiteOpenHelper {
         dados.put("cod_categoria", lancamento.getCodCategoria());
 
         if(lancamento.getCodLancamento() != null){
-            db.update("lancamentos",dados,"id_lancamento= ?",new String[]{String.valueOf(lancamento.getCodLancamento())});
+            db.update("lancamentos",dados,"id_lancamento = ?",new String[]{String.valueOf(lancamento.getCodLancamento())});
         } else {
             db.insert("lancamentos", null, dados);
         }

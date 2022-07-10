@@ -121,7 +121,6 @@ public class MetasFragment extends Fragment {
 
         try{
             DB db = new DB(getContext());
-            BuscaLancamentosRequest req = new BuscaLancamentosRequest();
             binding.listaMetas.setAdapter(new MetasAdapter(getActivity(),metas = db.buscaMetas()));
         } catch (Exception e) {
             Log.println(Log.ERROR,"Lançamentos","Erro na busca dos lançamentos" );

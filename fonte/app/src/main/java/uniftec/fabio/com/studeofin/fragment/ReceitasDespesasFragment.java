@@ -111,6 +111,7 @@ public class ReceitasDespesasFragment extends Fragment {
         } else {
             Toast.makeText(getContext(),getString(R.string.msg_salvar),Toast.LENGTH_LONG).show();
         }
+
     }
     private void ExcluirReceitaDespesa(){
 
@@ -187,6 +188,7 @@ public class ReceitasDespesasFragment extends Fragment {
     }
 
     private void clickLancamento(final LancamentosVO lanc){
+
         lancamentoSelecionado = lanc;
         binding.edtDescLancamento.setText(lanc.getDesLancamento());
         binding.edtValor.setText(String.format("%.2f",lanc.getVlrLancamento()));
@@ -197,6 +199,7 @@ public class ReceitasDespesasFragment extends Fragment {
                 break;
             }
         }
+
     }
 
     private boolean verificaCampos(){
